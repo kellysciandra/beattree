@@ -1,0 +1,1991 @@
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateArtists (20191223141842)
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "artists" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191223141842"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateProducers (20191223143705)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "producers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191223143705"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateBeats (20191223143710)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "beats" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191223143710"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateFavorites (20191223143714)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "beat_id" integer, "producer_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_02ac559a25"
+FOREIGN KEY ("beat_id")
+  REFERENCES "beats" ("id")
+, CONSTRAINT "fk_rails_98775f9248"
+FOREIGN KEY ("producer_id")
+  REFERENCES "producers" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_beat_id" ON "favorites" ("beat_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_producer_id" ON "favorites" ("producer_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191223143714"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-12-23 14:56:00.169842"], ["updated_at", "2019-12-23 14:56:00.169842"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFavorites (20191223143714)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "favorites"[0m
+  [1m[36mprimary::SchemaMigration Destroy (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20191223143714"]]
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFavorites (20191223143714)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "beat_id" integer, "producer_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_02ac559a25"
+FOREIGN KEY ("beat_id")
+  REFERENCES "beats" ("id")
+, CONSTRAINT "fk_rails_98775f9248"
+FOREIGN KEY ("producer_id")
+  REFERENCES "producers" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_beat_id" ON "favorites" ("beat_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_producer_id" ON "favorites" ("producer_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191223143714"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFavorites (20191223143714)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.6ms)[0m  [1m[35mDROP TABLE "favorites"[0m
+  [1m[36mprimary::SchemaMigration Destroy (0.5ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20191223143714"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "artists"[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "artists" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "beats"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "beats" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "producers"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "producers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20191223143710)[0m
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20191223141842),
+(20191223143705);
+
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-12-23 14:57:09.123006"], ["updated_at", "2019-12-23 14:57:09.123006"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "3bfebfbacb410883b1de4f81c779c0fde41585ec"], ["created_at", "2019-12-23 14:57:09.131183"], ["updated_at", "2019-12-23 14:57:09.131183"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "artists"[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "artists" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "beats"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "beats" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "producers"[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "producers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20191223143710)[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20191223141842),
+(20191223143705);
+
+[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-12-23 14:57:09.282150"], ["updated_at", "2019-12-23 14:57:09.282150"]]
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2019-12-23 14:57:09.322090"], ["key", "environment"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "3bfebfbacb410883b1de4f81c779c0fde41585ec"], ["created_at", "2019-12-23 14:57:09.335993"], ["updated_at", "2019-12-23 14:57:09.335993"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFavorites (20191223143714)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "beat_id" integer, "producer_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_02ac559a25"
+FOREIGN KEY ("beat_id")
+  REFERENCES "beats" ("id")
+, CONSTRAINT "fk_rails_98775f9248"
+FOREIGN KEY ("producer_id")
+  REFERENCES "producers" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_beat_id" ON "favorites" ("beat_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_producer_id" ON "favorites" ("producer_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191223143714"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFavorites (20191223143714)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "favorites"[0m
+  [1m[36mprimary::SchemaMigration Destroy (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20191223143714"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBeats (20191223143710)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "beats"[0m
+  [1m[36mprimary::SchemaMigration Destroy (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20191223143710"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProducers (20191223143705)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "producers"[0m
+  [1m[36mprimary::SchemaMigration Destroy (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20191223143705"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateArtists (20191223141842)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "artists"[0m
+  [1m[36mprimary::SchemaMigration Destroy (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20191223141842"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateArtists (20191223141842)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "artists" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "city" varchar, "state" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191223141842"]]
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateProducers (20191223143705)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "producers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "city" varchar, "state" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191223143705"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateBeats (20191223143710)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "beats" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191223143710"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateFavorites (20191223143714)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "beat_id" integer, "producer_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_02ac559a25"
+FOREIGN KEY ("beat_id")
+  REFERENCES "beats" ("id")
+, CONSTRAINT "fk_rails_98775f9248"
+FOREIGN KEY ("producer_id")
+  REFERENCES "producers" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_beat_id" ON "favorites" ("beat_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_producer_id" ON "favorites" ("producer_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191223143714"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddAttachmentMp3ToBeats (20191223150159)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddAttachmentMp3ToBeats (20191223150159)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddAttachmentMp3ToBeats (20191223150159)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "beats" ADD "mp3_file_name" varchar[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "beats" ADD "mp3_content_type" varchar[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "beats" ADD "mp3_file_size" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "beats" ADD "mp3_updated_at" datetime[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191223150159"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtist Create (1.2ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kelly"], ["email", "kellysciandra@icloud.com"], ["city", "brooklyn"], ["state", "ny"], ["created_at", "2019-12-23 15:23:12.907572"], ["updated_at", "2019-12-23 15:23:12.907572"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProducer Create (0.7ms)[0m  [1m[32mINSERT INTO "producers" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "producer kelly"], ["email", "producer kellysciandra@icloud.com"], ["city", "new york"], ["state", "ny"], ["created_at", "2019-12-23 15:23:12.933353"], ["updated_at", "2019-12-23 15:23:12.933353"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtist Create (4.5ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kelly"], ["email", "kellysciandra@icloud.com"], ["city", "brooklyn"], ["state", "ny"], ["created_at", "2019-12-23 15:24:08.347156"], ["updated_at", "2019-12-23 15:24:08.347156"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProducer Create (0.9ms)[0m  [1m[32mINSERT INTO "producers" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "producer kelly"], ["email", "producer kellysciandra@icloud.com"], ["city", "new york"], ["state", "ny"], ["created_at", "2019-12-23 15:24:08.466435"], ["updated_at", "2019-12-23 15:24:08.466435"]]
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT "artists".* FROM "artists" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mProducer Load (0.2ms)[0m  [1m[34mSELECT "producers".* FROM "producers" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mBeat Load (0.1ms)[0m  [1m[34mSELECT "beats".* FROM "beats" ORDER BY "beats"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mBeat Load (0.2ms)[0m  [1m[34mSELECT "beats".* FROM "beats" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mBeat Load (0.3ms)[0m  [1m[34mSELECT "beats".* FROM "beats" ORDER BY "beats"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mBeat Load (0.2ms)[0m  [1m[34mSELECT "beats".* FROM "beats" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mBeat Load (0.2ms)[0m  [1m[34mSELECT "beats".* FROM "beats" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "artists"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "artists" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "city" varchar, "state" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "beats"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "beats" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "mp3_file_name" varchar, "mp3_content_type" varchar, "mp3_file_size" integer, "mp3_updated_at" datetime)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "favorites"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "beat_id" integer, "producer_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_beat_id" ON "favorites" ("beat_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_producer_id" ON "favorites" ("producer_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "producers"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "producers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "city" varchar, "state" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afavorites" ("id" integer NOT NULL PRIMARY KEY, "beat_id" integer DEFAULT NULL, "producer_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_afavorites_on_producer_id" ON "afavorites" ("producer_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_afavorites_on_beat_id" ON "afavorites" ("beat_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "afavorites" ("id","beat_id","producer_id","created_at","updated_at")
+                     SELECT "id","beat_id","producer_id","created_at","updated_at" FROM "favorites"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "favorites"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" integer NOT NULL PRIMARY KEY, "beat_id" integer DEFAULT NULL, "producer_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_02ac559a25"
+FOREIGN KEY ("beat_id")
+  REFERENCES "beats" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_beat_id" ON "favorites" ("beat_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_producer_id" ON "favorites" ("producer_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "favorites" ("id","beat_id","producer_id","created_at","updated_at")
+                     SELECT "id","beat_id","producer_id","created_at","updated_at" FROM "afavorites"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "afavorites"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afavorites" ("id" integer NOT NULL PRIMARY KEY, "beat_id" integer DEFAULT NULL, "producer_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_afavorites_on_producer_id" ON "afavorites" ("producer_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_afavorites_on_beat_id" ON "afavorites" ("beat_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "afavorites" ("id","beat_id","producer_id","created_at","updated_at")
+                     SELECT "id","beat_id","producer_id","created_at","updated_at" FROM "favorites"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "favorites"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" integer NOT NULL PRIMARY KEY, "beat_id" integer DEFAULT NULL, "producer_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_02ac559a25"
+FOREIGN KEY ("beat_id")
+  REFERENCES "beats" ("id")
+, CONSTRAINT "fk_rails_98775f9248"
+FOREIGN KEY ("producer_id")
+  REFERENCES "producers" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_beat_id" ON "favorites" ("beat_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_producer_id" ON "favorites" ("producer_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "favorites" ("id","beat_id","producer_id","created_at","updated_at")
+                     SELECT "id","beat_id","producer_id","created_at","updated_at" FROM "afavorites"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "afavorites"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20191223150159)[0m
+  [1m[35m (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20191223141842),
+(20191223143705),
+(20191223143710),
+(20191223143714);
+
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-12-23 15:25:20.967312"], ["updated_at", "2019-12-23 15:25:20.967312"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "c4ccdf714e7b83379509c50e65633c55a55f7eca"], ["created_at", "2019-12-23 15:25:20.974486"], ["updated_at", "2019-12-23 15:25:20.974486"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "artists"[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "artists" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "city" varchar, "state" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "beats"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "beats" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "mp3_file_name" varchar, "mp3_content_type" varchar, "mp3_file_size" integer, "mp3_updated_at" datetime)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "favorites"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "beat_id" integer, "producer_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_beat_id" ON "favorites" ("beat_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_producer_id" ON "favorites" ("producer_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "producers"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "producers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "city" varchar, "state" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afavorites" ("id" integer NOT NULL PRIMARY KEY, "beat_id" integer DEFAULT NULL, "producer_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_afavorites_on_producer_id" ON "afavorites" ("producer_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_afavorites_on_beat_id" ON "afavorites" ("beat_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "afavorites" ("id","beat_id","producer_id","created_at","updated_at")
+                     SELECT "id","beat_id","producer_id","created_at","updated_at" FROM "favorites"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "favorites"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" integer NOT NULL PRIMARY KEY, "beat_id" integer DEFAULT NULL, "producer_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_02ac559a25"
+FOREIGN KEY ("beat_id")
+  REFERENCES "beats" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_beat_id" ON "favorites" ("beat_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_producer_id" ON "favorites" ("producer_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "favorites" ("id","beat_id","producer_id","created_at","updated_at")
+                     SELECT "id","beat_id","producer_id","created_at","updated_at" FROM "afavorites"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "afavorites"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afavorites" ("id" integer NOT NULL PRIMARY KEY, "beat_id" integer DEFAULT NULL, "producer_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_afavorites_on_producer_id" ON "afavorites" ("producer_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_afavorites_on_beat_id" ON "afavorites" ("beat_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "afavorites" ("id","beat_id","producer_id","created_at","updated_at")
+                     SELECT "id","beat_id","producer_id","created_at","updated_at" FROM "favorites"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "favorites"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" integer NOT NULL PRIMARY KEY, "beat_id" integer DEFAULT NULL, "producer_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_02ac559a25"
+FOREIGN KEY ("beat_id")
+  REFERENCES "beats" ("id")
+, CONSTRAINT "fk_rails_98775f9248"
+FOREIGN KEY ("producer_id")
+  REFERENCES "producers" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_beat_id" ON "favorites" ("beat_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_producer_id" ON "favorites" ("producer_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "favorites" ("id","beat_id","producer_id","created_at","updated_at")
+                     SELECT "id","beat_id","producer_id","created_at","updated_at" FROM "afavorites"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "afavorites"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20191223150159)[0m
+  [1m[35m (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20191223141842),
+(20191223143705),
+(20191223143710),
+(20191223143714);
+
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-12-23 15:25:21.055312"], ["updated_at", "2019-12-23 15:25:21.055312"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2019-12-23 15:25:21.061525"], ["key", "environment"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "c4ccdf714e7b83379509c50e65633c55a55f7eca"], ["created_at", "2019-12-23 15:25:21.067451"], ["updated_at", "2019-12-23 15:25:21.067451"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtist Create (0.3ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kelly"], ["email", "kellysciandra@icloud.com"], ["city", "brooklyn"], ["state", "ny"], ["created_at", "2019-12-23 15:25:21.087527"], ["updated_at", "2019-12-23 15:25:21.087527"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProducer Create (0.3ms)[0m  [1m[32mINSERT INTO "producers" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "producer kelly"], ["email", "producer kellysciandra@icloud.com"], ["city", "new york"], ["state", "ny"], ["created_at", "2019-12-23 15:25:21.099263"], ["updated_at", "2019-12-23 15:25:21.099263"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtist Create (0.4ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kelly"], ["email", "kellysciandra@icloud.com"], ["city", "brooklyn"], ["state", "ny"], ["created_at", "2019-12-23 15:25:26.391556"], ["updated_at", "2019-12-23 15:25:26.391556"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProducer Create (0.4ms)[0m  [1m[32mINSERT INTO "producers" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "producer kelly"], ["email", "producer kellysciandra@icloud.com"], ["city", "new york"], ["state", "ny"], ["created_at", "2019-12-23 15:25:26.406734"], ["updated_at", "2019-12-23 15:25:26.406734"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mArtist Load (0.5ms)[0m  [1m[34mSELECT "artists".* FROM "artists" ORDER BY "artists"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "producers"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "artists"[0m
+Started GET "/" for ::1 at 2019-12-23 10:47:37 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/dev/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/dev/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 12.6ms | Allocations: 481)
+Completed 200 OK in 35ms (Views: 24.5ms | ActiveRecord: 0.0ms | Allocations: 2641)
+
+
+Started GET "/artists" for ::1 at 2019-12-23 10:50:29 -0500
+Processing by ArtistsController#index as */*
+No template found for ArtistsController#index, rendering head :no_content
+Completed 204 No Content in 77ms (ActiveRecord: 0.0ms | Allocations: 3167)
+
+
+Started GET "/artist" for ::1 at 2019-12-23 10:50:52 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/artist"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.8) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.0) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/artist" for ::1 at 2019-12-23 10:51:52 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActionController::RoutingError (No route matches [GET] "/artist"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.8) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.0) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/artist" for ::1 at 2019-12-23 10:52:44 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/artist"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.8) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.0) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /Users/dev/.rvm/gems/ruby-2.6.1/bin/rake:23)
+Started GET "/artists" for ::1 at 2019-12-23 10:54:21 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArtistsController#index as */*
+No template found for ArtistsController#index, rendering head :no_content
+Completed 204 No Content in 10ms (ActiveRecord: 0.0ms | Allocations: 2805)
+
+
+Started GET "/artists" for ::1 at 2019-12-23 10:54:28 -0500
+Processing by ArtistsController#index as */*
+No template found for ArtistsController#index, rendering head :no_content
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 115)
+
+
+Started GET "/artists" for ::1 at 2019-12-23 10:54:46 -0500
+Processing by ArtistsController#index as */*
+No template found for ArtistsController#index, rendering head :no_content
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 115)
+
+
+Started GET "/artists" for ::1 at 2019-12-23 10:54:56 -0500
+Processing by ArtistsController#index as */*
+No template found for ArtistsController#index, rendering head :no_content
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 115)
+
+
+Started GET "/artist" for ::1 at 2019-12-23 10:55:13 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/artist"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.8) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.0) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/artists" for ::1 at 2019-12-23 10:55:42 -0500
+Processing by ArtistsController#index as */*
+No template found for ArtistsController#index, rendering head :no_content
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 108)
+
+
+Started GET "/artist" for ::1 at 2019-12-23 10:55:52 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/artist"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.8) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.0) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/artist" for ::1 at 2019-12-23 10:59:26 -0500
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/artist"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.8) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.0) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/artists" for ::1 at 2019-12-23 10:59:39 -0500
+Processing by ArtistsController#index as */*
+No template found for ArtistsController#index, rendering head :no_content
+Completed 204 No Content in 31ms (ActiveRecord: 0.0ms | Allocations: 2816)
+
+
+Started GET "/artists/" for ::1 at 2019-12-23 11:04:40 -0500
+Processing by ArtistsController#index as */*
+  Parameters: {"artist"=>{}}
+No template found for ArtistsController#index, rendering head :no_content
+Completed 204 No Content in 3ms (ActiveRecord: 11.4ms | Allocations: 114)
+
+
+Started GET "/artists/" for ::1 at 2019-12-23 11:04:47 -0500
+Processing by ArtistsController#index as */*
+  Parameters: {"artist"=>{}}
+No template found for ArtistsController#index, rendering head :no_content
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 115)
+
+
+Started GET "/artists/" for ::1 at 2019-12-23 11:04:58 -0500
+Processing by ArtistsController#index as */*
+  Parameters: {"artist"=>{}}
+No template found for ArtistsController#index, rendering head :no_content
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 115)
+
+
+Started GET "/" for ::1 at 2019-12-23 11:05:18 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/dev/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/dev/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 18.1ms | Allocations: 316)
+Completed 200 OK in 33ms (Views: 24.9ms | ActiveRecord: 0.0ms | Allocations: 1594)
+
+
+Started GET "/artists" for ::1 at 2019-12-23 11:05:22 -0500
+Processing by ArtistsController#index as HTML
+Completed 406 Not Acceptable in 7ms (ActiveRecord: 0.0ms | Allocations: 1484)
+
+
+  
+ActionController::MissingExactTemplate (ArtistsController#index is missing a template for request formats: text/html):
+  
+actionpack (6.0.2.1) lib/action_controller/metal/implicit_render.rb:45:in `default_render'
+actionpack (6.0.2.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (6.0.2.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (6.0.2.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (6.0.2.1) lib/abstract_controller/base.rb:196:in `process_action'
+actionpack (6.0.2.1) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (6.0.2.1) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.2.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.2.1) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.2.1) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.2.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.2.1) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.2.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.2.1) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.2.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.2.1) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.2.1) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.2.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.2.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.0.8) lib/rack/etag.rb:25:in `call'
+rack (2.0.8) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.8) lib/rack/head.rb:12:in `call'
+activerecord (6.0.2.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.8) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.0) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/artist" for ::1 at 2019-12-23 11:05:30 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/artist"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.8) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.0) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/artists" for ::1 at 2019-12-23 11:05:36 -0500
+Processing by ArtistsController#index as HTML
+Completed 406 Not Acceptable in 1ms (ActiveRecord: 0.0ms | Allocations: 177)
+
+
+  
+ActionController::MissingExactTemplate (ArtistsController#index is missing a template for request formats: text/html):
+  
+actionpack (6.0.2.1) lib/action_controller/metal/implicit_render.rb:45:in `default_render'
+actionpack (6.0.2.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (6.0.2.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (6.0.2.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (6.0.2.1) lib/abstract_controller/base.rb:196:in `process_action'
+actionpack (6.0.2.1) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (6.0.2.1) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.2.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.2.1) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.2.1) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.2.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.2.1) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.2.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.2.1) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.2.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.2.1) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.2.1) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.2.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.2.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.0.8) lib/rack/etag.rb:25:in `call'
+rack (2.0.8) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.8) lib/rack/head.rb:12:in `call'
+activerecord (6.0.2.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.8) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.0) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/producers" for ::1 at 2019-12-23 11:05:42 -0500
+  
+SyntaxError (/Users/dev/Documents/GitHub/beattree/beattree-api/app/controllers/producers_controller.rb:11: syntax error, unexpected tIDENTIFIER, expecting ')'
+...r = Producer.find_by(:id params[:id])
+...                         ^~~~~~
+/Users/dev/Documents/GitHub/beattree/beattree-api/app/controllers/producers_controller.rb:11: syntax error, unexpected ')', expecting end
+...oducer.find_by(:id params[:id])
+...                              ^
+/Users/dev/Documents/GitHub/beattree/beattree-api/app/controllers/producers_controller.rb:31: syntax error, unexpected tSYMBEG
+...uire(:producer).permit(:name. :email, :city, :state)
+...                              ^):
+  
+app/controllers/producers_controller.rb:11: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/producers_controller.rb:11: syntax error, unexpected ')', expecting end
+app/controllers/producers_controller.rb:31: syntax error, unexpected tSYMBEG
+app/controllers/producers_controller.rb:11: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/producers_controller.rb:11: syntax error, unexpected ')', expecting end
+app/controllers/producers_controller.rb:31: syntax error, unexpected tSYMBEG
+Started GET "/artists" for ::1 at 2019-12-23 11:05:53 -0500
+Processing by ArtistsController#index as HTML
+Completed 406 Not Acceptable in 1ms (ActiveRecord: 0.0ms | Allocations: 158)
+
+
+  
+ActionController::MissingExactTemplate (ArtistsController#index is missing a template for request formats: text/html):
+  
+actionpack (6.0.2.1) lib/action_controller/metal/implicit_render.rb:45:in `default_render'
+actionpack (6.0.2.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (6.0.2.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (6.0.2.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (6.0.2.1) lib/abstract_controller/base.rb:196:in `process_action'
+actionpack (6.0.2.1) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (6.0.2.1) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.2.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.2.1) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.2.1) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.2.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.2.1) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.2.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.2.1) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.2.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.2.1) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.2.1) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.2.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.2.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.0.8) lib/rack/etag.rb:25:in `call'
+rack (2.0.8) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.8) lib/rack/head.rb:12:in `call'
+activerecord (6.0.2.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.8) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.0) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/artists" for ::1 at 2019-12-23 11:06:53 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ArtistsController#index as HTML
+  [1m[36mArtist Load (0.5ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/controllers/artists_controller.rb:4:in `index'
+Completed 200 OK in 27ms (Views: 9.4ms | ActiveRecord: 1.2ms | Allocations: 7402)
+
+
+Started GET "/artists/" for ::1 at 2019-12-23 11:07:07 -0500
+Processing by ArtistsController#index as */*
+  Parameters: {"artist"=>{}}
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/controllers/artists_controller.rb:4:in `index'
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 1087)
+
+
+Started POST "/artists/" for ::1 at 2019-12-23 12:49:25 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"name", "username"=>"username", "artist"=>{"name"=>"name"}}
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms | Allocations: 708)
+
+
+  
+NoMethodError (undefined method `permin' for <ActionController::Parameters {"name"=>"name"} permitted: false>:ActionController::Parameters
+Did you mean?  permit
+               permit!):
+  
+app/controllers/artists_controller.rb:32:in `artist_params'
+app/controllers/artists_controller.rb:21:in `create'
+Started POST "/artists/" for ::1 at 2019-12-23 12:49:56 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"name", "username"=>"username", "artist"=>{"name"=>"name"}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 699)
+
+
+  
+NoMethodError (undefined method `permin' for <ActionController::Parameters {"name"=>"name"} permitted: false>:ActionController::Parameters
+Did you mean?  permit
+               permit!):
+  
+app/controllers/artists_controller.rb:32:in `artist_params'
+app/controllers/artists_controller.rb:21:in `create'
+Started POST "/artists/" for ::1 at 2019-12-23 12:50:17 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"email"=>"formGridEmail", "artist"=>{"email"=>"formGridEmail"}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 699)
+
+
+  
+NoMethodError (undefined method `permin' for #<ActionController::Parameters:0x00007fddc8b54570>
+Did you mean?  permit
+               permit!):
+  
+app/controllers/artists_controller.rb:32:in `artist_params'
+app/controllers/artists_controller.rb:21:in `create'
+Started POST "/artists/" for ::1 at 2019-12-23 12:50:27 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"email"=>"formGridEmail", "artist"=>{"email"=>"formGridEmail"}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 699)
+
+
+  
+NoMethodError (undefined method `permin' for #<ActionController::Parameters:0x00007fddc746e6f8>
+Did you mean?  permit
+               permit!):
+  
+app/controllers/artists_controller.rb:32:in `artist_params'
+app/controllers/artists_controller.rb:21:in `create'
+Started POST "/artists/" for ::1 at 2019-12-23 12:50:52 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ArtistsController#create as */*
+  Parameters: {"email"=>"formGridEmail", "artist"=>{"email"=>"formGridEmail"}}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (1.2ms)[0m  [1m[32mINSERT INTO "artists" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "formGridEmail"], ["created_at", "2019-12-23 17:50:52.924672"], ["updated_at", "2019-12-23 17:50:52.924672"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 29ms (Views: 0.6ms | ActiveRecord: 6.5ms | Allocations: 6958)
+
+
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mArtist Load (0.1ms)[0m  [1m[34mSELECT "artists".* FROM "artists" ORDER BY "artists"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Started POST "/artists/" for ::1 at 2019-12-23 12:55:09 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArtistsController#create as */*
+  Parameters: {"email"=>"formGridEmail", "artist"=>{"email"=>"formGridEmail"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (2.9ms)[0m  [1m[32mINSERT INTO "artists" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "formGridEmail"], ["created_at", "2019-12-23 17:55:09.835005"], ["updated_at", "2019-12-23 17:55:09.835005"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 31ms (Views: 0.4ms | ActiveRecord: 6.1ms | Allocations: 7339)
+
+
+Started POST "/artists/" for ::1 at 2019-12-23 13:00:35 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"artist"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 119)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: artist):
+  
+app/controllers/artists_controller.rb:32:in `artist_params'
+app/controllers/artists_controller.rb:21:in `create'
+Started POST "/artists/" for ::1 at 2019-12-23 13:02:58 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"artist"=>{}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 112)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: artist):
+  
+app/controllers/artists_controller.rb:32:in `artist_params'
+app/controllers/artists_controller.rb:21:in `create'
+Started POST "/artists/" for ::1 at 2019-12-23 13:03:44 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"artist"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 112)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: artist):
+  
+app/controllers/artists_controller.rb:32:in `artist_params'
+app/controllers/artists_controller.rb:21:in `create'
+Started POST "/artists/" for ::1 at 2019-12-23 13:04:17 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"artist"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 112)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: artist):
+  
+app/controllers/artists_controller.rb:32:in `artist_params'
+app/controllers/artists_controller.rb:21:in `create'
+Started POST "/artists/" for ::1 at 2019-12-23 13:11:08 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ArtistsController#create as */*
+  Parameters: {"email"=>"", "artist"=>{"email"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (1.0ms)[0m  [1m[32mINSERT INTO "artists" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", ""], ["created_at", "2019-12-23 18:11:08.553409"], ["updated_at", "2019-12-23 18:11:08.553409"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 13ms (Views: 0.6ms | ActiveRecord: 4.4ms | Allocations: 2193)
+
+
+Started POST "/artists/" for ::1 at 2019-12-23 13:12:18 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"email"=>"", "artist"=>{"email"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.6ms)[0m  [1m[32mINSERT INTO "artists" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", ""], ["created_at", "2019-12-23 18:12:18.928641"], ["updated_at", "2019-12-23 18:12:18.928641"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 8ms (Views: 0.4ms | ActiveRecord: 2.2ms | Allocations: 2199)
+
+
+Started POST "/artists/" for ::1 at 2019-12-23 13:12:51 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"email"=>"", "artist"=>{"email"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.4ms)[0m  [1m[32mINSERT INTO "artists" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", ""], ["created_at", "2019-12-23 18:12:51.104459"], ["updated_at", "2019-12-23 18:12:51.104459"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (3.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 4.3ms | Allocations: 2199)
+
+
+Started POST "/artists/" for ::1 at 2019-12-23 13:13:06 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"email"=>"", "artist"=>{"email"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.9ms)[0m  [1m[32mINSERT INTO "artists" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", ""], ["created_at", "2019-12-23 18:13:06.078325"], ["updated_at", "2019-12-23 18:13:06.078325"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 2.4ms | Allocations: 2185)
+
+
+Started POST "/artists/" for ::1 at 2019-12-23 13:13:15 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"email"=>"", "artist"=>{"email"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.5ms)[0m  [1m[32mINSERT INTO "artists" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", ""], ["created_at", "2019-12-23 18:13:15.616249"], ["updated_at", "2019-12-23 18:13:15.616249"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 2.4ms | Allocations: 2186)
+
+
+Started POST "/artists/" for ::1 at 2019-12-23 13:14:30 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"email"=>"", "artist"=>{"email"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (1.3ms)[0m  [1m[32mINSERT INTO "artists" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", ""], ["created_at", "2019-12-23 18:14:30.636834"], ["updated_at", "2019-12-23 18:14:30.636834"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 2.3ms | Allocations: 2185)
+
+
+Started POST "/artists/" for ::1 at 2019-12-23 13:14:48 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"email"=>"", "artist"=>{"email"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.5ms)[0m  [1m[32mINSERT INTO "artists" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", ""], ["created_at", "2019-12-23 18:14:48.014243"], ["updated_at", "2019-12-23 18:14:48.014243"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 1.5ms | Allocations: 2199)
+
+
+Started POST "/artists/" for ::1 at 2019-12-23 13:15:20 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"email"=>"", "artist"=>{"email"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.4ms)[0m  [1m[32mINSERT INTO "artists" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", ""], ["created_at", "2019-12-23 18:15:20.348417"], ["updated_at", "2019-12-23 18:15:20.348417"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 2.5ms | Allocations: 2185)
+
+
+Started POST "/artists/" for ::1 at 2019-12-23 13:16:08 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"email"=>"", "artist"=>{"email"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.5ms)[0m  [1m[32mINSERT INTO "artists" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", ""], ["created_at", "2019-12-23 18:16:08.102087"], ["updated_at", "2019-12-23 18:16:08.102087"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 1.6ms | Allocations: 2185)
+
+
+Started POST "/artists/" for ::1 at 2019-12-23 13:16:40 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"email"=>"", "artist"=>{"email"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.6ms)[0m  [1m[32mINSERT INTO "artists" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", ""], ["created_at", "2019-12-23 18:16:40.519515"], ["updated_at", "2019-12-23 18:16:40.519515"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 5.4ms | Allocations: 2185)
+
+
+Started POST "/artists/" for ::1 at 2019-12-23 13:17:17 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"email"=>"kelly@aol.com", "artist"=>{"email"=>"kelly@aol.com"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.8ms)[0m  [1m[32mINSERT INTO "artists" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "kelly@aol.com"], ["created_at", "2019-12-23 18:17:17.454675"], ["updated_at", "2019-12-23 18:17:17.454675"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 11ms (Views: 2.5ms | ActiveRecord: 1.8ms | Allocations: 2185)
+
+
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT "artists".* FROM "artists" ORDER BY "artists"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Started POST "/artists/" for ::1 at 2019-12-23 13:19:36 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArtistsController#create as */*
+  Parameters: {"email"=>"newuser@gmail.com", "password"=>"[FILTERED]", "city"=>"kenmore", "state"=>"ny", "artist"=>{"email"=>"newuser@gmail.com", "city"=>"kenmore", "state"=>"ny"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.8ms)[0m  [1m[32mINSERT INTO "artists" ("email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "newuser@gmail.com"], ["city", "kenmore"], ["state", "ny"], ["created_at", "2019-12-23 18:19:36.728466"], ["updated_at", "2019-12-23 18:19:36.728466"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 27ms (Views: 1.6ms | ActiveRecord: 3.3ms | Allocations: 7409)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT "artists".* FROM "artists" ORDER BY "artists"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Started POST "/artists/" for ::1 at 2019-12-23 13:24:53 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"rondon@aol.com", "email"=>"rondon@aol.com", "password"=>"[FILTERED]", "city"=>"rondon", "state"=>"rondon", "artist"=>{"name"=>"rondon@aol.com", "email"=>"rondon@aol.com", "city"=>"rondon", "state"=>"rondon"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.4ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "rondon@aol.com"], ["email", "rondon@aol.com"], ["city", "rondon"], ["state", "rondon"], ["created_at", "2019-12-23 18:24:53.433459"], ["updated_at", "2019-12-23 18:24:53.433459"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 28ms (Views: 0.5ms | ActiveRecord: 3.3ms | Allocations: 7445)
+
+
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT "artists".* FROM "artists" ORDER BY "artists"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "artists"[0m
+  [1m[35m (33.2ms)[0m  [1m[35mCREATE TABLE "artists" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "city" varchar, "state" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "beats"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "beats" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "mp3_file_name" varchar, "mp3_content_type" varchar, "mp3_file_size" integer, "mp3_updated_at" datetime)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "favorites"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "beat_id" integer, "producer_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_beat_id" ON "favorites" ("beat_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_producer_id" ON "favorites" ("producer_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "producers"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "producers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "city" varchar, "state" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afavorites" ("id" integer NOT NULL PRIMARY KEY, "beat_id" integer DEFAULT NULL, "producer_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_afavorites_on_producer_id" ON "afavorites" ("producer_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_afavorites_on_beat_id" ON "afavorites" ("beat_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "afavorites" ("id","beat_id","producer_id","created_at","updated_at")
+                     SELECT "id","beat_id","producer_id","created_at","updated_at" FROM "favorites"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "favorites"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" integer NOT NULL PRIMARY KEY, "beat_id" integer DEFAULT NULL, "producer_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_02ac559a25"
+FOREIGN KEY ("beat_id")
+  REFERENCES "beats" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_beat_id" ON "favorites" ("beat_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_producer_id" ON "favorites" ("producer_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "favorites" ("id","beat_id","producer_id","created_at","updated_at")
+                     SELECT "id","beat_id","producer_id","created_at","updated_at" FROM "afavorites"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "afavorites"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afavorites" ("id" integer NOT NULL PRIMARY KEY, "beat_id" integer DEFAULT NULL, "producer_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_afavorites_on_producer_id" ON "afavorites" ("producer_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_afavorites_on_beat_id" ON "afavorites" ("beat_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "afavorites" ("id","beat_id","producer_id","created_at","updated_at")
+                     SELECT "id","beat_id","producer_id","created_at","updated_at" FROM "favorites"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE "favorites"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" integer NOT NULL PRIMARY KEY, "beat_id" integer DEFAULT NULL, "producer_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_02ac559a25"
+FOREIGN KEY ("beat_id")
+  REFERENCES "beats" ("id")
+, CONSTRAINT "fk_rails_98775f9248"
+FOREIGN KEY ("producer_id")
+  REFERENCES "producers" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_beat_id" ON "favorites" ("beat_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_producer_id" ON "favorites" ("producer_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "favorites" ("id","beat_id","producer_id","created_at","updated_at")
+                     SELECT "id","beat_id","producer_id","created_at","updated_at" FROM "afavorites"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "afavorites"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20191223150159)[0m
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20191223141842),
+(20191223143705),
+(20191223143710),
+(20191223143714);
+
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-12-23 18:26:14.034268"], ["updated_at", "2019-12-23 18:26:14.034268"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "c4ccdf714e7b83379509c50e65633c55a55f7eca"], ["created_at", "2019-12-23 18:26:14.051475"], ["updated_at", "2019-12-23 18:26:14.051475"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "artists"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "artists" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "city" varchar, "state" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "beats"[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "beats" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "mp3_file_name" varchar, "mp3_content_type" varchar, "mp3_file_size" integer, "mp3_updated_at" datetime)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "favorites"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "beat_id" integer, "producer_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_beat_id" ON "favorites" ("beat_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_producer_id" ON "favorites" ("producer_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "producers"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "producers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "city" varchar, "state" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afavorites" ("id" integer NOT NULL PRIMARY KEY, "beat_id" integer DEFAULT NULL, "producer_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_afavorites_on_producer_id" ON "afavorites" ("producer_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_afavorites_on_beat_id" ON "afavorites" ("beat_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "afavorites" ("id","beat_id","producer_id","created_at","updated_at")
+                     SELECT "id","beat_id","producer_id","created_at","updated_at" FROM "favorites"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "favorites"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" integer NOT NULL PRIMARY KEY, "beat_id" integer DEFAULT NULL, "producer_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_02ac559a25"
+FOREIGN KEY ("beat_id")
+  REFERENCES "beats" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_beat_id" ON "favorites" ("beat_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_producer_id" ON "favorites" ("producer_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "favorites" ("id","beat_id","producer_id","created_at","updated_at")
+                     SELECT "id","beat_id","producer_id","created_at","updated_at" FROM "afavorites"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "afavorites"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afavorites" ("id" integer NOT NULL PRIMARY KEY, "beat_id" integer DEFAULT NULL, "producer_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_afavorites_on_producer_id" ON "afavorites" ("producer_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_afavorites_on_beat_id" ON "afavorites" ("beat_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "afavorites" ("id","beat_id","producer_id","created_at","updated_at")
+                     SELECT "id","beat_id","producer_id","created_at","updated_at" FROM "favorites"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "favorites"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" integer NOT NULL PRIMARY KEY, "beat_id" integer DEFAULT NULL, "producer_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_02ac559a25"
+FOREIGN KEY ("beat_id")
+  REFERENCES "beats" ("id")
+, CONSTRAINT "fk_rails_98775f9248"
+FOREIGN KEY ("producer_id")
+  REFERENCES "producers" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_beat_id" ON "favorites" ("beat_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_producer_id" ON "favorites" ("producer_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "favorites" ("id","beat_id","producer_id","created_at","updated_at")
+                     SELECT "id","beat_id","producer_id","created_at","updated_at" FROM "afavorites"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "afavorites"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20191223150159)[0m
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20191223141842),
+(20191223143705),
+(20191223143710),
+(20191223143714);
+
+[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-12-23 18:26:14.180446"], ["updated_at", "2019-12-23 18:26:14.180446"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2019-12-23 18:26:14.186043"], ["key", "environment"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "c4ccdf714e7b83379509c50e65633c55a55f7eca"], ["created_at", "2019-12-23 18:26:14.190993"], ["updated_at", "2019-12-23 18:26:14.190993"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtist Create (0.3ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kelly"], ["email", "kellysciandra@icloud.com"], ["city", "brooklyn"], ["state", "ny"], ["created_at", "2019-12-23 18:26:14.212891"], ["updated_at", "2019-12-23 18:26:14.212891"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProducer Create (0.4ms)[0m  [1m[32mINSERT INTO "producers" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "producer kelly"], ["email", "producer kellysciandra@icloud.com"], ["city", "new york"], ["state", "ny"], ["created_at", "2019-12-23 18:26:14.225792"], ["updated_at", "2019-12-23 18:26:14.225792"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Started POST "/artist" for ::1 at 2019-12-23 13:27:57 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/artist"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.8) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.0) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/artists" for ::1 at 2019-12-23 13:28:21 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"bobbyjones@gmail.com", "email"=>"bobbyjones@gmail.com", "password"=>"[FILTERED]", "city"=>"noting", "state"=>"NU", "artist"=>{"name"=>"bobbyjones@gmail.com", "email"=>"bobbyjones@gmail.com", "city"=>"noting", "state"=>"NU"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (2.3ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "bobbyjones@gmail.com"], ["email", "bobbyjones@gmail.com"], ["city", "noting"], ["state", "NU"], ["created_at", "2019-12-23 18:28:21.327084"], ["updated_at", "2019-12-23 18:28:21.327084"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 46ms (Views: 8.8ms | ActiveRecord: 4.8ms | Allocations: 7449)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 13:32:01 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"", "email"=>"", "password"=>"[FILTERED]", "city"=>"", "state"=>"", "artist"=>{"name"=>"", "email"=>"", "city"=>"", "state"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (1.9ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", ""], ["email", ""], ["city", ""], ["state", ""], ["created_at", "2019-12-23 18:32:01.123267"], ["updated_at", "2019-12-23 18:32:01.123267"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 5.0ms | Allocations: 2294)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 13:32:08 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"asdfd@tits.com", "email"=>"asdfd@tits.com", "password"=>"[FILTERED]", "city"=>"", "state"=>"", "artist"=>{"name"=>"asdfd@tits.com", "email"=>"asdfd@tits.com", "city"=>"", "state"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.6ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "asdfd@tits.com"], ["email", "asdfd@tits.com"], ["city", ""], ["state", ""], ["created_at", "2019-12-23 18:32:08.555470"], ["updated_at", "2019-12-23 18:32:08.555470"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 12ms (Views: 0.4ms | ActiveRecord: 5.8ms | Allocations: 2294)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 13:33:14 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"titty@titty.com", "email"=>"titty@titty.com", "password"=>"[FILTERED]", "city"=>"", "state"=>"", "artist"=>{"name"=>"titty@titty.com", "email"=>"titty@titty.com", "city"=>"", "state"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (3.7ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "titty@titty.com"], ["email", "titty@titty.com"], ["city", ""], ["state", ""], ["created_at", "2019-12-23 18:33:14.048563"], ["updated_at", "2019-12-23 18:33:14.048563"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (11.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 21ms (Views: 0.4ms | ActiveRecord: 15.5ms | Allocations: 2294)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 13:34:03 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"sss@email.gom", "email"=>"sss@email.gom", "password"=>"[FILTERED]", "city"=>"", "state"=>"", "artist"=>{"name"=>"sss@email.gom", "email"=>"sss@email.gom", "city"=>"", "state"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.5ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "sss@email.gom"], ["email", "sss@email.gom"], ["city", ""], ["state", ""], ["created_at", "2019-12-23 18:34:03.536176"], ["updated_at", "2019-12-23 18:34:03.536176"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (8.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 19ms (Views: 0.4ms | ActiveRecord: 9.1ms | Allocations: 2282)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 13:38:18 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"john@john.com", "email"=>"john@john.com", "password"=>"[FILTERED]", "city"=>"", "state"=>"", "artist"=>{"name"=>"john@john.com", "email"=>"john@john.com", "city"=>"", "state"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (4.4ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "john@john.com"], ["email", "john@john.com"], ["city", ""], ["state", ""], ["created_at", "2019-12-23 18:38:18.643752"], ["updated_at", "2019-12-23 18:38:18.643752"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 27ms (Views: 1.1ms | ActiveRecord: 9.3ms | Allocations: 2280)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 13:39:25 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.5ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 18:39:25.865470"], ["updated_at", "2019-12-23 18:39:25.865470"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (13.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 27ms (Views: 0.5ms | ActiveRecord: 14.4ms | Allocations: 2284)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 13:39:57 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.5ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 18:39:57.795403"], ["updated_at", "2019-12-23 18:39:57.795403"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 16ms (Views: 0.4ms | ActiveRecord: 6.3ms | Allocations: 2284)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 13:49:08 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"", "email"=>"", "password"=>"[FILTERED]", "city"=>"", "state"=>"", "artist"=>{"name"=>"", "email"=>"", "city"=>"", "state"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (1.7ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", ""], ["email", ""], ["city", ""], ["state", ""], ["created_at", "2019-12-23 18:49:08.695112"], ["updated_at", "2019-12-23 18:49:08.695112"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 18ms (Views: 1.0ms | ActiveRecord: 3.8ms | Allocations: 2280)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 13:51:05 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.6ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 18:51:05.882165"], ["updated_at", "2019-12-23 18:51:05.882165"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 15ms (Views: 0.7ms | ActiveRecord: 5.3ms | Allocations: 2284)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 13:52:28 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.5ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 18:52:28.511000"], ["updated_at", "2019-12-23 18:52:28.511000"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (7.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 22ms (Views: 0.6ms | ActiveRecord: 8.3ms | Allocations: 2284)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 14:04:37 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (1.4ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 19:04:37.329557"], ["updated_at", "2019-12-23 19:04:37.329557"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 25ms (Views: 1.2ms | ActiveRecord: 4.8ms | Allocations: 2284)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 14:05:05 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.6ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 19:05:05.832938"], ["updated_at", "2019-12-23 19:05:05.832938"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (8.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 15ms (Views: 0.4ms | ActiveRecord: 8.9ms | Allocations: 2284)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 14:09:03 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (1.3ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 19:09:03.427015"], ["updated_at", "2019-12-23 19:09:03.427015"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 18ms (Views: 1.0ms | ActiveRecord: 4.7ms | Allocations: 2284)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 14:11:37 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (3.0ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 19:11:37.514592"], ["updated_at", "2019-12-23 19:11:37.514592"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 14ms (Views: 0.5ms | ActiveRecord: 6.1ms | Allocations: 2284)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 14:12:10 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.6ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 19:12:10.157918"], ["updated_at", "2019-12-23 19:12:10.157918"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 17ms (Views: 1.0ms | ActiveRecord: 1.4ms | Allocations: 2284)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 14:13:07 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (6.8ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 19:13:07.272045"], ["updated_at", "2019-12-23 19:13:07.272045"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 130ms (Views: 93.5ms | ActiveRecord: 8.4ms | Allocations: 2287)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 14:13:20 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.5ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 19:13:21.002439"], ["updated_at", "2019-12-23 19:13:21.002439"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 5.4ms | Allocations: 2284)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 14:13:40 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (2.4ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 19:13:40.316114"], ["updated_at", "2019-12-23 19:13:40.316114"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 12ms (Views: 2.5ms | ActiveRecord: 4.2ms | Allocations: 2284)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 14:14:09 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"", "email"=>"", "password"=>"[FILTERED]", "city"=>"", "state"=>"", "artist"=>{"name"=>"", "email"=>"", "city"=>"", "state"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.5ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", ""], ["email", ""], ["city", ""], ["state", ""], ["created_at", "2019-12-23 19:14:09.340360"], ["updated_at", "2019-12-23 19:14:09.340360"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (10.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 18ms (Views: 0.4ms | ActiveRecord: 10.7ms | Allocations: 2280)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 14:15:06 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.5ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 19:15:06.719883"], ["updated_at", "2019-12-23 19:15:06.719883"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 3.2ms | Allocations: 2284)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 14:17:21 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.5ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 19:17:21.094575"], ["updated_at", "2019-12-23 19:17:21.094575"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 1.8ms | Allocations: 2284)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 15:04:19 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"df@df", "email"=>"df@df", "password"=>"[FILTERED]", "city"=>"dfd", "state"=>"gdgdgdasd", "artist"=>{"name"=>"df@df", "email"=>"df@df", "city"=>"dfd", "state"=>"gdgdgdasd"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (1.8ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "df@df"], ["email", "df@df"], ["city", "dfd"], ["state", "gdgdgdasd"], ["created_at", "2019-12-23 20:04:19.162168"], ["updated_at", "2019-12-23 20:04:19.162168"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (9.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 22ms (Views: 0.6ms | ActiveRecord: 11.2ms | Allocations: 2280)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 15:07:01 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (1.5ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 20:07:01.205104"], ["updated_at", "2019-12-23 20:07:01.205104"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (17.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 32ms (Views: 0.5ms | ActiveRecord: 18.6ms | Allocations: 2320)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 15:08:12 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (4.5ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 20:08:12.774963"], ["updated_at", "2019-12-23 20:08:12.774963"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 31ms (Views: 0.6ms | ActiveRecord: 5.6ms | Allocations: 2318)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 15:09:30 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.4ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 20:09:30.404777"], ["updated_at", "2019-12-23 20:09:30.404777"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (26.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 39ms (Views: 0.4ms | ActiveRecord: 26.9ms | Allocations: 2318)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 15:11:02 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (3.4ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 20:11:02.361269"], ["updated_at", "2019-12-23 20:11:02.361269"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 4.2ms | Allocations: 2318)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 15:12:18 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (2.2ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 20:12:18.512897"], ["updated_at", "2019-12-23 20:12:18.512897"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (14.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 24ms (Views: 0.7ms | ActiveRecord: 16.4ms | Allocations: 2318)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 15:13:34 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"id"=>"", "name"=>"", "email"=>"", "password"=>"[FILTERED]", "city"=>"", "state"=>"", "artist"=>{"id"=>"", "name"=>"", "email"=>"", "city"=>"", "state"=>""}}
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.5ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", ""], ["email", ""], ["city", ""], ["state", ""], ["created_at", "2019-12-23 20:13:34.512943"], ["updated_at", "2019-12-23 20:13:34.512943"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (10.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 21ms (Views: 0.4ms | ActiveRecord: 11.4ms | Allocations: 2314)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 15:22:31 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ArtistsController#create as */*
+  Parameters: {"id"=>"", "name"=>"dfd@dfd", "email"=>"dfd@dfd", "password"=>"[FILTERED]", "city"=>"", "state"=>"", "artist"=>{"id"=>"", "name"=>"dfd@dfd", "email"=>"dfd@dfd", "city"=>"", "state"=>""}}
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (5.4ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "dfd@dfd"], ["email", "dfd@dfd"], ["city", ""], ["state", ""], ["created_at", "2019-12-23 20:22:31.403341"], ["updated_at", "2019-12-23 20:22:31.403341"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 17ms (Views: 0.8ms | ActiveRecord: 8.7ms | Allocations: 2314)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 15:23:12 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.5ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 20:23:12.764494"], ["updated_at", "2019-12-23 20:23:12.764494"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 12ms (Views: 0.6ms | ActiveRecord: 6.0ms | Allocations: 2318)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 15:23:31 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.6ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 20:23:31.242528"], ["updated_at", "2019-12-23 20:23:31.242528"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 2.4ms | Allocations: 2318)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 15:29:21 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ArtistsController#create as */*
+  Parameters: {"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (1.2ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 20:29:21.641688"], ["updated_at", "2019-12-23 20:29:21.641688"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 17ms (Views: 0.5ms | ActiveRecord: 3.8ms | Allocations: 2319)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 15:30:21 -0500
+Processing by ArtistsController#create as */*
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 107)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: artist):
+  
+app/controllers/artists_controller.rb:32:in `artist_params'
+app/controllers/artists_controller.rb:21:in `create'
+Started POST "/artists" for ::1 at 2019-12-23 15:38:51 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ArtistsController#create as */*
+  Parameters: {"id"=>"", "name"=>"", "email"=>"", "password"=>"[FILTERED]", "city"=>"", "state"=>"", "artist"=>{"id"=>"", "name"=>"", "email"=>"", "city"=>"", "state"=>""}}
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (2.3ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", ""], ["email", ""], ["city", ""], ["state", ""], ["created_at", "2019-12-23 20:38:52.048889"], ["updated_at", "2019-12-23 20:38:52.048889"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 22ms (Views: 1.4ms | ActiveRecord: 3.2ms | Allocations: 2314)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 15:39:19 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.6ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 20:39:19.070940"], ["updated_at", "2019-12-23 20:39:19.070940"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (7.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 15ms (Views: 0.4ms | ActiveRecord: 7.7ms | Allocations: 2318)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 15:39:49 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (0.8ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 20:39:49.926388"], ["updated_at", "2019-12-23 20:39:49.926388"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 18ms (Views: 0.4ms | ActiveRecord: 7.0ms | Allocations: 2318)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 15:40:49 -0500
+Processing by ArtistsController#create as */*
+  Parameters: {"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (4.8ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 20:40:49.742062"], ["updated_at", "2019-12-23 20:40:49.742062"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (8.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 24ms (Views: 1.3ms | ActiveRecord: 13.7ms | Allocations: 2318)
+
+
+Started POST "/artists" for ::1 at 2019-12-23 15:47:11 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ArtistsController#create as */*
+  Parameters: {"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "password"=>"[FILTERED]", "city"=>"Brooklyn", "state"=>"NY", "artist"=>{"id"=>"", "name"=>"kellysciandra@icloud.com", "email"=>"kellysciandra@icloud.com", "city"=>"Brooklyn", "state"=>"NY"}}
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[36mArtist Create (1.5ms)[0m  [1m[32mINSERT INTO "artists" ("name", "email", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kellysciandra@icloud.com"], ["email", "kellysciandra@icloud.com"], ["city", "Brooklyn"], ["state", "NY"], ["created_at", "2019-12-23 20:47:11.204952"], ["updated_at", "2019-12-23 20:47:11.204952"]]
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/artists_controller.rb:22:in `create'
+Completed 200 OK in 27ms (Views: 1.4ms | ActiveRecord: 4.8ms | Allocations: 2318)
+
+
