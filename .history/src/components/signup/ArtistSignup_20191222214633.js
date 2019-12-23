@@ -4,17 +4,14 @@ import Button from 'react-bootstrap/Button'
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 
-
-
-
 import { Col, Form } from "react-bootstrap";
 
 
-function Signup() {
+function ArtistLogin() {
       return(
-    <Form>
+    <Form className='signup'>
       <Form.Row>
-        <Form.Group as={Col} controlId="formGridEmail">
+        <Form.Group controlId="formGridEmail">
           <Form.Label>Email</Form.Label>
           <Form.Control type="email" placeholder="Enter email" />
         </Form.Group>
@@ -25,15 +22,6 @@ function Signup() {
         </Form.Group>
       </Form.Row>
 
-      <Form.Group controlId="formGridAddress1">
-        <Form.Label>Address</Form.Label>
-        <Form.Control placeholder="1234 Main St" />
-      </Form.Group>
-
-      <Form.Group controlId="formGridAddress2">
-        <Form.Label>Address 2</Form.Label>
-        <Form.Control placeholder="Apartment, studio, or floor" />
-      </Form.Group>
 
       <Form.Row>
         <Form.Group as={Col} controlId="formGridCity">
@@ -48,21 +36,14 @@ function Signup() {
             <option>...</option>
           </Form.Control>
         </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridZip">
-          <Form.Label>Zip</Form.Label>
-          <Form.Control />
-        </Form.Group>
       </Form.Row>
 
-      <Form.Group id="formGridCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
 
       <Button variant="primary" type="submit">
         Submit
       </Button>
     </Form>
+
     )
   };
 
@@ -71,4 +52,4 @@ function Signup() {
 
 
 
-export default Signup
+export default ArtistLogin
