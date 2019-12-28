@@ -18,7 +18,7 @@ export default class Artist extends Component {
     render() { 
         return (
             <div>
-                <h1 className='title'>Hello {this.props.name}</h1>
+                <h1 className='title'>Hello {console.log(this.props)}</h1>
                 <h3 className='sub-title'>What would you like to do?</h3>
             
                 <Button className='button' type="button" onClick={this.handleSubmit} >Upload Beat</Button> 

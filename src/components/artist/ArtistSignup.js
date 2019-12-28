@@ -43,7 +43,7 @@ class ArtistSignup extends Component {
 
     axios.post('http://localhost:3001/artists', {artist}, {withCredentials: true})
     .then(response => { 
-      if (response.data.status === 'created') {
+      if (response.data.message === 'artist not found') {
         this.props.handleLogin(response.data)
         this.redirect()
       } else {
@@ -57,20 +57,19 @@ class ArtistSignup extends Component {
 
   redirect = () => {
     this.props.history.push('/artist')
-  }
+}
 
-  handleErrors = () => {
-    return (
-      <div>
-        <ul>
-        {this.state.errors.map(error => {
-        return <li key={error}>{error}</li>
-          })
-        }
-        </ul>
-      </div>
-    )
-  }
+     handleErrors = () => {
+        return (
+            <div> 
+            <ul>
+                {this.state.errors.map(error => {
+                    return <li key={error}>{error}</li>
+                })}
+            </ul>
+            </div>
+        )
+    }
 
   render() {
     const {email, password, city, state} = this.state
@@ -105,7 +104,6 @@ class ArtistSignup extends Component {
        <Form.Control type="city" name="state" placeholder="city" value={state} />
        </Form.Group>
        </Form.Row>
-
        <Button variant="dark" type="submit">Submit</Button>
      </Form>
 

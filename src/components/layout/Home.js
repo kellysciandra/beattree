@@ -22,8 +22,7 @@ export default class Home extends Component {
     }
 
 
-
-    render() { console.log(this.props.playStatus)
+    render() { 
         return (
             <div>
             <NavBar />
@@ -41,8 +40,6 @@ export default class Home extends Component {
                     <Button variant="light"  className='container-2'>▶
                     </Button>
              </div>
-         
-
         )
     }
 }

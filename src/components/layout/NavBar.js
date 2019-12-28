@@ -9,7 +9,7 @@ const NavBar = () => {
         <Navbar expand="sm" variant="dark">
           <Navbar.Brand href="/">BeatTree</Navbar.Brand>
             <NavLink to="/artist/ArtistSignup" style={{ marginRight: 10 }}>Artist</NavLink> 
-            <NavLink to="/signup/producer" style={{ marginRight: 10 }}>Producer</NavLink>
+            <NavLink to="/producer/ProducerSignup" style={{ marginRight: 10 }}>Producer</NavLink>
             <Navbar.Brand href="#">logout</Navbar.Brand>
       </Navbar>
       </div>
