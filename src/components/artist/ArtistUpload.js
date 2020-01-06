@@ -1,15 +1,16 @@
-import React from 'react'
-// import { DirectUploadProvider } from 'react-activestorage-provider'
+import React, { Component } from 'react'
+
 import Button from 'react-bootstrap/Button'
 import { Col, Form } from "react-bootstrap";
 import axios from 'axios';
-// import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-class ArtistUpload extends React.Component {
+
+class ArtistUpload extends Component {
   
   state = {
     title: '',
-    newFile: null
+    newFile: null,
   }
   
   onFormSubmit = (e) => {
@@ -32,7 +33,7 @@ class ArtistUpload extends React.Component {
     this.props.history.push('/artist/show')
 }
 
-handleFile = (e) => {
+handleChange = (e) => {
   this.setState({
     newFile: e.currentTarget.files[0]
   });
@@ -53,7 +54,8 @@ handleFile = (e) => {
   
   
        <Form.Group  as={Col} controlId="formGridMP3">
-        <Form.Control className="upload" type="file" placeholder="Mp3" onChange={this.handleFile}/>
+        <Form.Control className="upload" type="file" placeholder="Mp3" onChange={this.handleChange}/>
+      {this.props.type === "file" ? "files" : "mp3"}
         </Form.Group>
      
         <Button variant="dark" type="submit">Submit</Button>
@@ -63,6 +65,12 @@ handleFile = (e) => {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    user: state.currentUser
+  }
+}
 
 
-export default ArtistUpload
+
+export default connect(mapStateToProps)(ArtistUpload)

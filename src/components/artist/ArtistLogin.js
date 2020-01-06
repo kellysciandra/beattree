@@ -16,6 +16,8 @@ class ArtistLogin extends Component {
             password: '',
             errors: ''
         }
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
     handleChange = (event) => {
@@ -34,10 +36,10 @@ class ArtistLogin extends Component {
             password: password
         }
 
-        axios.post('http://localhost:3001/login', {artist}, {withCredentials: true})
-        .then(response => {
+        axios.post('http://localhost:3001/sessions', {artist}, {withCredentials: true})
+        .then(response => { console.log(response)
             if (response.data.logged_in) {
-                this.props.handleLogin(response.data)
+                this.props.handleAuth(response.data.artist)
                 this.redirect()
             } else {
                 this.setState({
@@ -67,6 +69,7 @@ class ArtistLogin extends Component {
 
     render() {
         const {email, password} = this.state
+        
     return (
         <div>
         <h1 className='title'>Login u Artist</h1>

@@ -9,7 +9,7 @@ export default class Beats extends Component {
         this.state = {
             play: false,
             pause: true,
-            link: 'public/mp3/audio-1.wav',
+            link: 'http://localhost:3001/beats',
             controlled: true,
             position: 0,
             playStatus: Sound.status.PLAYING

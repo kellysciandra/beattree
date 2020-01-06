@@ -1,97 +1,119 @@
 import React, { Component }from 'react';
 import { BrowserRouter, Switch, Route} from 'react-router-dom'
 import axios from 'axios'
+// import { connect } from 'react-redux';
 
 
 //components
 import Home from './components/layout/Home'
 import NavBar from './components/layout/NavBar'
 import Artist from './components/artist/Artist'
-import ArtistLogin from './components/artist/ArtistLogin'
-import Producer from './components/producer/Producer'
-import ArtistSignup from './components/artist/ArtistSignup'
-import ArtistUpload from './components/artist/ArtistUpload'
-import ArtistBeats from './components/artist/ArtistBeats'
-import ProducerSignup from './components/signup/ProducerSignup'
-import Beats from './components/audio/Beats'
+// import ArtistLogin from './components/artist/ArtistLogin'
+// import Producer from './components/producer/Producer'
+// import ArtistSignup from './components/artist/ArtistSignup'
+// import ArtistUpload from './components/artist/ArtistUpload'
+// import ArtistBeats from './components/artist/ArtistBeats'
+// import ProducerSignup from './components/signup/ProducerSignup'
+// import Beats from './components/audio/Beats'
 
 //css
 import './css/style.scss'
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = { 
-      isLoggedIn: false,
+      loggedInStatus: "NOT_LOGGED_IN",
       artist: {}
      };
+
+     this.handleLogin = this.handleLogin.bind(this)
+   
+  }
+
+
+
+  loginStatus = () => { 
+    axios.get('http://localhost:3001/logged_in', { withCredentials: true })
+    .then(response => { console.log(response, response.data.logged_in, this.state.loggedInStatus)
+      if (
+        response.data.logged_in && this.state.loggedInStatus === "NOT_LOGGED_IN"
+      ) {
+        this.setState({
+          loggedInStatus: "LOGGED_IN",
+          artist: response.data
+        });
+      } else if (
+        !response.data.logged_in & (this.state.loggedInStatus === "LOGGED_IN")
+      ) {
+        this.setState({
+          loggedInStatus: "NOT_LOGGED_IN", 
+          artist: {}
+        })
+      }
+    }).catch(error => {
+      console.log(error)
+    })
   }
 
   componentDidMount() {
-    this.loginStatus()
+    this.loginStatus();
   }
 
 
-  componentWillMount() {
-    return this.props.loggedInStatus ? this.redirect() : null
-  }
-
-  loginStatus = () => {
-    axios.get('http://localhost:3001/logged_in', 
-    {withCredentials: true})
-    .then(response => { 
-      if (response.data.logged_in) {
-        this.handleLogin(response)
-      } else {
-        this.setState({
-        errors: response.data.errors
-      })
-     }
-    })
-    .catch(error => console.log('api errors:', error))
-  }
-
-  handleLogin = (data) => {
+  handleLogin = (data) => { console.log(data)
     this.setState ({
-      isLoggedIn: true,
-      artist: data.artist
+      loggedInStatus: "LOGGED_IN",
+      artist: data
     })
+    this.loginStatus();
   }
 
 
-  render() {
+  render() { 
     return (
       <div>
          <BrowserRouter>
           <Switch>
             <Route exact path="/"
                    render={props => (
-                   <Home {...props} loggedInStatus={this.state.isLoggedIn}/>
+                   <Home {...props} loggedInStatus={this.state.loggedInStatus}
+                   handleLogin={this.handleLogin}
+                   />
                     )}/>
-            <Route exact path="/artist/ArtistSignup"
+            {/* <Route exact path="/artist/ArtistSignup"
                     render={props => (
                     <ArtistSignup {...props} handleLogin={this.handleLogin}
-                    loggedInStatus={this.state.isLoggedIn}/>
+                    loggedInStatus={this.state.isLoggedIn}
+                    handleAuth={this.handleAuth} />
                     )}/>
             <Route exact path="/artist/ArtistLogin" 
                     render={props => (
                       <ArtistLogin {...props} handleLogin={this.handleLogin}
-                        loggedInStatus={this.state.isLoggedIn}/>
+                        loggedInStatus={this.state.loggedInStatus}/>
+                    )}/> */}
+            <Route exact path='/artist' 
+                    render={props => (
+                      <Artist {...props} handleLogin={this.handleLogin}
+                      loggedInStatus={this.state.loggedInStatus}/>
                     )}/>
 
             <Route exact path="/" component={NavBar} />
-            <Route exact path="/signup/producer" component={ProducerSignup}/>
-            <Route exact path="/artist" component={Artist}/>
+            {/* <Route exact path="/signup/producer" component={ProducerSignup}/>
             <Route exact path="/producer" component={Producer}/>
             <Route exact path="/audio/beats" component={Beats}/>
             <Route exact path="/artist/show" component={ArtistBeats}/>
-            <Route exact path='/artist/upload' component={ArtistUpload}/>
+            <Route exact path='/artist/upload' component={ArtistUpload}/> */}
           </Switch>
         </BrowserRouter>
       </div>
     );
   }
 }
-export default App;
+
+
+
+
+export default App

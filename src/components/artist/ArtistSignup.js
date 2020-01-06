@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import axios from 'axios'
-
 import Button from 'react-bootstrap/Button'
 import { Col, Form } from "react-bootstrap";
-
+// import Artist from './Artist'
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 
 class ArtistSignup extends Component {
-  constructor() {
-    super() 
+  constructor(props) {
+    super(props) 
+
     this.state = {
       email: '',
       password: '',
@@ -18,96 +18,88 @@ class ArtistSignup extends Component {
       state: '',
       errors: ''
     }
-
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
+
   handleChange = event => {
-    const {name, value} = event.target
     this.setState({
-      [name]: value
+      [event.target.name]: event.target.value
     })
   }
 
 // creating an artist object based on components state
 // data object axios will POST to the Rails Server
+// destructuring 
   handleSubmit = (event) => {
     event.preventDefault()
+
     const {email, password, city, state} = this.state
 
-    let artist = {
-      email: email, 
-      password: password,
-      city: city,
-      state: state
-    }
-
-    axios.post('http://localhost:3001/artists', {artist}, {withCredentials: true})
-    .then(response => { 
-      if (response.data.message === 'artist not found') {
-        this.props.handleLogin(response.data)
-        this.redirect()
-      } else {
-        this.setState({
-          errors: response.data.errors
-        })
+    axios
+      .post(
+        'http://localhost:3001/artists', 
+        {
+          artist: {
+            email: email,
+            password: password, 
+            city: city, 
+            state: state
+          }
+        },
+      { withCredentials: true },
+    )
+    .then(response => {  
+      if (response.data.status === 'created' ) {
+        this.props.handleAuth(response.data.artist)
+  
       }
     })
     .catch(error => console.log('api errors:', error))
   }
 
-  redirect = () => {
-    this.props.history.push('/artist')
-}
 
-     handleErrors = () => {
-        return (
-            <div> 
-            <ul>
-                {this.state.errors.map(error => {
-                    return <li key={error}>{error}</li>
-                })}
-            </ul>
-            </div>
-        )
-    }
 
-  render() {
+
+  render() {  
+    //destructuring
     const {email, password, city, state} = this.state
+   
     return (
       <div>
 
       <h1 className='title'>Hello Artist</h1>
       <h3 className='sub-title'>Create a Profile</h3>
-
-     <Form className='signup' onSubmit={this.handleSubmit} onChange={this.handleChange}>
+      
+     <Form className='signup' onSubmit={this.handleSubmit}>
        <Form.Row>
 
        <Form.Group controlId="formGridEmail">
        <Form.Label>Email</Form.Label>
-       <Form.Control type="email" name="email" placeholder="Enter email" value={email}/>
+       <Form.Control type="email" name="email" placeholder="Enter email" onChange={this.handleChange} value={email}/>
        </Form.Group>
-
+      
        <Form.Group as={Col} controlId="formGridPassword">
        <Form.Label>Password</Form.Label>
-       <Form.Control type="password" name="password" placeholder="Password" value={password} />
+       <Form.Control type="password" name="password" placeholder="Password" onChange={this.handleChange} value={password} />
        </Form.Group>
        </Form.Row>
-
+       
        <Form.Row>
        <Form.Group as={Col} controlId="formGridCity">
        <Form.Label>City</Form.Label>
-       <Form.Control type="city" name="city" placholder="City" value={city} />
+       <Form.Control type="city" name="city" placholder="City" onChange={this.handleChange} value={city} />
        </Form.Group>
 
        <Form.Group as={Col} controlId="formGridState">
        <Form.Label>State</Form.Label>
-       <Form.Control type="city" name="state" placeholder="city" value={state} />
+       <Form.Control type="city" name="state" placeholder="city" onChange={this.handleChange} value={state} />
        </Form.Group>
        </Form.Row>
        <Button variant="dark" type="submit">Submit</Button>
      </Form>
-
-     
+      
    </div>
 
     )
