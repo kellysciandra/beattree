@@ -38,7 +38,7 @@ class ArtistLogin extends Component {
         }
 
         axios.post('http://localhost:3001/sessions', {artist}, {withCredentials: true})
-        .then(response => { console.log(response)
+        .then(response => { 
             if (response.data.logged_in) {
                 this.props.handleAuth(response.data.artist)
                 this.redirect()

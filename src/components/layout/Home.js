@@ -24,9 +24,7 @@ export default class Home extends Component {
 
     }
 
-
-
-    render() { console.log(this.props)
+    render() { 
         return  (
             <div>
             <NavBar loggedInStatus={this.props.loggedInStatus} handleLogout={this.props.handleLogout}/>

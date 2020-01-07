@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios'
 import Button from 'react-bootstrap/Button'
 import { Col, Form } from "react-bootstrap";
+import NavBar from '../layout/NavBar'
 // import Artist from './Artist'
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -28,6 +29,7 @@ class ArtistSignup extends Component {
       [event.target.name]: event.target.value
     })
   }
+  
 
 // creating an artist object based on components state
 // data object axios will POST to the Rails Server
@@ -50,7 +52,7 @@ class ArtistSignup extends Component {
         },
       { withCredentials: true },
     )
-    .then(response => {  console.log(response)
+    .then(response => { 
       if (response.data.status === 'created' ) {
         this.props.handleAuth(response.data.artist)
         this.redirect()
@@ -71,7 +73,7 @@ class ArtistSignup extends Component {
    
     return (
       <div>
-
+      <NavBar loggedInStatus={this.props.loggedInStatus} handleLogout={this.props.handleLogout} />
       <h1 className='title'>Hello Artist</h1>
       <h3 className='sub-title'>Create a Profile</h3>
       

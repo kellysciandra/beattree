@@ -23,7 +23,7 @@ class NavBar extends Component{
     }
     
  
-  render() { console.log(this.props)
+  render() { 
     return (
         <div className='nav-bar'>
         <Navbar expand="sm" variant="dark">

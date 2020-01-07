@@ -9,12 +9,12 @@ import Home from './components/layout/Home'
 
 import Artist from './components/artist/Artist'
 import ArtistLogin from './components/artist/ArtistLogin'
-// import Producer from './components/producer/Producer'
+import Producer from './components/producer/Producer'
 import ArtistSignup from './components/artist/ArtistSignup'
-// import ArtistUpload from './components/artist/ArtistUpload'
-// import ArtistBeats from './components/artist/ArtistBeats'
-// import ProducerSignup from './components/signup/ProducerSignup'
-// import Beats from './components/audio/Beats'
+import ArtistUpload from './components/artist/ArtistUpload'
+import ArtistBeats from './components/artist/ArtistBeats'
+import ProducerSignup from './components/signup/ProducerSignup'
+import Beats from './components/audio/Beats'
 
 //css
 import './css/style.scss'
@@ -113,13 +113,18 @@ class App extends Component {
                       <Artist {...props} artist={this.state.artist}
                       loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout}/>
                     )}/>
+             <Route exact path='/artist/upload'
+                    render={props => (
+                      <ArtistUpload {...props} artist={this.state.artist}
+                      loggedInStatus={this.state.loggedInStatus} 
+                      handleLogout={this.handleLogout}/>
+                    )}/>
            
   
-            {/* <Route exact path="/signup/producer" component={ProducerSignup}/>
+             <Route exact path="/signup/producer" component={ProducerSignup}/>
             <Route exact path="/producer" component={Producer}/>
             <Route exact path="/audio/beats" component={Beats}/>
             <Route exact path="/artist/show" component={ArtistBeats}/>
-            <Route exact path='/artist/upload' component={ArtistUpload}/> */}
           </Switch>
         </BrowserRouter>
       </div>
