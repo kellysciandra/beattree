@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import NavBar from '../layout/NavBar'
 
 import Button from 'react-bootstrap/Button'
 import { Col, Form } from "react-bootstrap";
@@ -52,19 +53,8 @@ class ArtistLogin extends Component {
 
     redirect = () => {
         this.props.history.push('/artist')
-    }
+}
 
-    handleErrors = () => {
-        return (
-            <div> 
-            <ul>
-                {this.state.errors.map(error => {
-                    return <li key={error}>{error}</li>
-                })}
-            </ul>
-            </div>
-        )
-    }
 
 
     render() {
@@ -72,6 +62,7 @@ class ArtistLogin extends Component {
         
     return (
         <div>
+         <NavBar loggedInStatus={this.props.loggedInStatus} handleLogout={this.props.handleLogout} />
         <h1 className='title'>Login u Artist</h1>
   
        <Form className='signup' onSubmit={this.handleSubmit} onChange={this.handleChange}>

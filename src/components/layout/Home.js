@@ -5,9 +5,6 @@ import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button'
 import Sound from 'react-sound';
 import NavBar from './NavBar'
-import ArtistSignup from '../artist/ArtistSignup'
-
-import ArtistLogin from '../artist/ArtistLogin'
 
 
 export default class Home extends Component {
@@ -25,19 +22,14 @@ export default class Home extends Component {
             resume: this.props.playStatus === Sound.status.PAUSED
           };
 
-          this.handleAuth = this.handleAuth.bind(this)
     }
 
-    handleAuth = (data) =>{ 
-        this.props.handleLogin(data)
-        this.props.history.push("/artist")
-    }
 
 
     render() { console.log(this.props)
-        return (
+        return  (
             <div>
-            <NavBar />
+            <NavBar loggedInStatus={this.props.loggedInStatus} handleLogout={this.props.handleLogout}/>
                 <h2 className= "logo"> BeatTree </h2>
                     <Button onClick={this.handlePlay} variant="light" className='container-1'>▶
                     </Button>
@@ -52,8 +44,6 @@ export default class Home extends Component {
                     <Button variant="light"  className='container-2'>▶
                     </Button>
 
-                    <ArtistSignup handleAuth={this.handleAuth}/>
-                    <ArtistLogin handleAuth={this.handleAuth}/>
              </div>
         )
     }

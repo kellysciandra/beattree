@@ -50,14 +50,17 @@ class ArtistSignup extends Component {
         },
       { withCredentials: true },
     )
-    .then(response => {  
+    .then(response => {  console.log(response)
       if (response.data.status === 'created' ) {
         this.props.handleAuth(response.data.artist)
-  
+        this.redirect()
       }
     })
     .catch(error => console.log('api errors:', error))
   }
+  redirect = () => {
+    this.props.history.push('/artist')
+}
 
 
 

@@ -6,11 +6,11 @@ import axios from 'axios'
 
 //components
 import Home from './components/layout/Home'
-import NavBar from './components/layout/NavBar'
+
 import Artist from './components/artist/Artist'
-// import ArtistLogin from './components/artist/ArtistLogin'
+import ArtistLogin from './components/artist/ArtistLogin'
 // import Producer from './components/producer/Producer'
-// import ArtistSignup from './components/artist/ArtistSignup'
+import ArtistSignup from './components/artist/ArtistSignup'
 // import ArtistUpload from './components/artist/ArtistUpload'
 // import ArtistBeats from './components/artist/ArtistBeats'
 // import ProducerSignup from './components/signup/ProducerSignup'
@@ -30,6 +30,8 @@ class App extends Component {
      };
 
      this.handleLogin = this.handleLogin.bind(this)
+     this.handleAuth = this.handleAuth.bind(this)
+     this.handleLogout = this.handleLogout.bind(this)
    
   }
 
@@ -37,13 +39,13 @@ class App extends Component {
 
   loginStatus = () => { 
     axios.get('http://localhost:3001/logged_in', { withCredentials: true })
-    .then(response => { console.log(response, response.data.logged_in, this.state.loggedInStatus)
+    .then(response => { 
       if (
         response.data.logged_in && this.state.loggedInStatus === "NOT_LOGGED_IN"
       ) {
         this.setState({
           loggedInStatus: "LOGGED_IN",
-          artist: response.data
+          artist: response.data.artist
         });
       } else if (
         !response.data.logged_in & (this.state.loggedInStatus === "LOGGED_IN")
@@ -62,13 +64,23 @@ class App extends Component {
     this.loginStatus();
   }
 
+  handleAuth = (data) =>{ 
+    this.handleLogin(data)
+}
 
-  handleLogin = (data) => { console.log(data)
+
+  handleLogin = (data) => { 
     this.setState ({
       loggedInStatus: "LOGGED_IN",
       artist: data
     })
-    this.loginStatus();
+  }
+
+  handleLogout = () => {
+    this.setState({
+      loggedInStatus: "NOT_LOGGED_IN",
+      artist: {}
+    })
   }
 
 
@@ -80,27 +92,29 @@ class App extends Component {
             <Route exact path="/"
                    render={props => (
                    <Home {...props} loggedInStatus={this.state.loggedInStatus}
-                   handleLogin={this.handleLogin}
+                   handleLogin={this.handleLogin} handleLogout={this.handleLogout}
                    />
                     )}/>
-            {/* <Route exact path="/artist/ArtistSignup"
+            <Route exact path="/artist/ArtistSignup"
                     render={props => (
                     <ArtistSignup {...props} handleLogin={this.handleLogin}
                     loggedInStatus={this.state.isLoggedIn}
-                    handleAuth={this.handleAuth} />
+                    handleAuth={this.handleAuth} handleLogout={this.handleLogout} />
                     )}/>
             <Route exact path="/artist/ArtistLogin" 
                     render={props => (
                       <ArtistLogin {...props} handleLogin={this.handleLogin}
-                        loggedInStatus={this.state.loggedInStatus}/>
-                    )}/> */}
+                        loggedInStatus={this.state.loggedInStatus}
+                        handleAuth={this.handleAuth} handleLogout={this.handleLogout}
+                        />
+                    )}/>
             <Route exact path='/artist' 
                     render={props => (
-                      <Artist {...props} handleLogin={this.handleLogin}
-                      loggedInStatus={this.state.loggedInStatus}/>
+                      <Artist {...props} artist={this.state.artist}
+                      loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout}/>
                     )}/>
-
-            <Route exact path="/" component={NavBar} />
+           
+  
             {/* <Route exact path="/signup/producer" component={ProducerSignup}/>
             <Route exact path="/producer" component={Producer}/>
             <Route exact path="/audio/beats" component={Beats}/>
