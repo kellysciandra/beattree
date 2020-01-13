@@ -30,7 +30,8 @@ class ArtistUpload extends Component {
       config: { 
         headers: {'Content-Type': 'multipart/form-data'}
       }
-    }).then(response => console.log(response))           
+    }).then(response => console.log(response)) 
+    .then(this.redirect())          
   };
 
   redirect = () => {
@@ -49,9 +50,15 @@ handleTitleChange = event => {
   })
 }
 
+// componentDidMount = () => {
+//   this.setState({
+//     artist_id: this.props.artist.id
+//   })
+// }
+
 
   
-  render() { console.log(this.state)
+  render() { 
     return (
         <div>
       <NavBar loggedInStatus={this.props.loggedInStatus} handleLogout={this.props.handleLogout} />

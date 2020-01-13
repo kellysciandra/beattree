@@ -1,33 +1,19 @@
 import React, { Component } from 'react'
-
+import { connect } from 'react-redux';
 // import Beats from '../audio/Beats'
 // import { NavLink } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
-import Sound from 'react-sound';
+
 import NavBar from './NavBar'
 
 
-export default class Home extends Component {
-    constructor(props) {
-        super(props) 
+class Home extends Component {
 
-        this.state = {
-            file: null
-        }
-        
-        this.controls = {
-            play: this.props.playStatus === Sound.status.STOPPED,
-            stop: this.props.playStatus !== Sound.status.STOPPED,
-            pause: this.props.playStatus === Sound.status.PLAYING,
-            resume: this.props.playStatus === Sound.status.PAUSED
-          };
 
-    }
-
-    render() { 
+    render() { console.log(this.props)
         return  (
             <div>
-            <NavBar loggedInStatus={this.props.loggedInStatus} handleLogout={this.props.handleLogout}/>
+            <NavBar loggedIn={this.props.loggedIn} artist={this.props.artist}/>
                 <h2 className= "logo"> BeatTree </h2>
                     <Button onClick={this.handlePlay} variant="light" className='container-1'>▶
                     </Button>
@@ -46,3 +32,12 @@ export default class Home extends Component {
         )
     }
 }
+
+const mapStateToProps = (state)  => {
+    return {
+      artist: state.artist,
+      loggedIn: state.loggedIn
+    }
+  }
+
+export default connect(mapStateToProps)(Home)

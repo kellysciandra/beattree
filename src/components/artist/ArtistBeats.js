@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button'
-import {Howl, Howler} from 'howler';
+import Button from 'react-bootstrap/Button';
+import Sound from 'react-sound'
+
 
 
 export default class ArtistBeats extends Component {
@@ -27,41 +28,43 @@ export default class ArtistBeats extends Component {
                 'Content-Type': 'application/json'
             }
         }).then(response => { 
-            this.setState({
-                beats: response.data.beats
-            })
-            // this.state.beats.map((beat) => this.setState({
-            //     files: beat.file
-            // }))
-        })
+           this.setState({
+               files: response.data
+           })
+            }) 
     }
 
 
 
     handlePlay = (src) => {
-        const sound = new Howl({
-          src
-        })
-      sound.play()
+      
     }
 
     renderButtonAndSound = () => { 
-        return  Object.keys(this.state.beats).map((beat, index) => {
+        return  Object.values(this.state.files).map((file,index) => {
 
             return (
-            <Button key={index} onClick={() => this.handlePlay(beat.play)} variant="light" className='container-1'>▶
+            <Button key={index} type="audio/mp3" onClick={() => this.handlePlay({file})} variant="light" className='container-1'>▶
             </Button>
             )
         })
     }
 
-    render () { 
-        Howler.volume(1.0)
+    render () {  console.log(this.state.files)
+  
     return (
         <div>            
         <h2 className="logo">BeatTree</h2>
                 {this.renderButtonAndSound()} 
-            </div>
+            <Sound
+            url={this.state.files}
+            playStatus={Sound.status.PLAYING}
+            onLoading={this.handleSongLoading}
+            onPlaying={this.handleSongPlaying}
+            onFinishedPlaying={this.handleSongFinishedPlaying}
+            />
+
+        </div>
         )
     }  
 }
