@@ -5,6 +5,7 @@ import { Col, Form } from "react-bootstrap";
 import NavBar from '../layout/NavBar'
 import { Link } from 'react-router-dom'
 import  { loginArtist } from '../../actions/artistActions'
+import { Redirect } from 'react-router-dom'
 
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -32,16 +33,19 @@ class ArtistLogin extends Component {
     handleSubmit = (event) => { 
         event.preventDefault() 
         this.props.loginArtist(this.state)
-        this.props.history.push('/artist')
+
     }
 
-    render() { 
+    render() { console.log(this.props)
         // destructuring
         const {email, password} = this.state
         
+      if (this.props.authError === 'LOGIN SUCCESS') return <Redirect to='/artist'/>
+        
+       
     return ( 
         <div>
-         <NavBar/>
+         <NavBar artist={this.props.artist} loggedIn={this.props.loggedIn}/>
         <h1 className='title'>Login u Artist</h1>
        <Form className='signup' onSubmit={this.handleSubmit}>
          <Form.Row>
@@ -54,6 +58,7 @@ class ArtistLogin extends Component {
          <Form.Control type="password" name="password" placeholder="Password"  onChange={this.handleChange} value={password} />
          </Form.Group>
          </Form.Row>
+         <span className="nav-bar">{this.props.authError}</span><br></br><br></br>
          <Button variant="dark" type="submit">Login</Button>
          <div>
             or <Link to='/artist/ArtistSignup'>sign up</Link>
@@ -64,7 +69,13 @@ class ArtistLogin extends Component {
     }
 }
 
-const mapStateToProps = ({ artist }) => ({ artist })
+const mapStateToProps = (state)  => {
+    return {
+      artist: state.artist.artist,
+      loggedIn: state.artist.loggedIn,
+      authError: state.artist.authError
+    }
+  }
 
 const mapDispatchToProps= dispatch => {
     return {

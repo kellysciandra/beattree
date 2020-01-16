@@ -32,19 +32,11 @@ html {
 }
 
 .container-2 {
-  background-color: #478559;
-  border: dotted;
-  border-style: dashed;
+  background-color:#29e0a3;
   padding: 10px;
-  margin-left: 75px;
-  display: inline;
+  margin-left: 300px;
+
   border-radius: 20px;
-}
-
-
-
-.italic {
-  font-style: italic;
 }
 
 .caption {
@@ -325,19 +317,29 @@ audio {
   margin-left: 20px;
   margin-bottom: 25px
 }
+.card-title {
+  background-color:#29e0a3;
+  font-family: 'Concert One', cursive;
+  font-size: 3em;
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-bottom: 25px
+}
 
-.sub-title {
+.card-sub-title {
+  background-color:#29e0a3;
   font-family: 'Concert One', cursive;
   font-size: 2em;
-  color: #478559;
   margin-left: 20px;
   margin-bottom: 25px
 }
 
 .button {
+  background-color:#39a0ca;
   font-family: 'Concert One', cursive;
-  padding: 20px;
+  padding: 10px;
   margin-left: 20px;
+  margin-bottom: 20px;
   margin-right: 20px;
   border-radius: 8px;
 }
@@ -345,4 +347,14 @@ audio {
 .upload {
   padding: 0.2em;
   cursor: pointer;
+}
+
+// .player-wrapper {
+//   position: relative;
+//   padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */
+// }
+
+.react-player {
+  width: 50%;
+  left: 0;
 }

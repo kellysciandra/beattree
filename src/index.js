@@ -5,12 +5,12 @@ import App from './App';
 // will be able to access our redux store and/or dispatch actions from any component
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import artistsReducer from './reducers/artistsReducer.js'
+import rootReducer from './reducers/rootReducer.js'
 import thunk from 'redux-thunk';
 
 
-const store = createStore(artistsReducer, (applyMiddleware(thunk)));
-
+const store = createStore(rootReducer, (applyMiddleware(thunk)));
+// console.log(store.getState())
 
 ReactDOM.render(
 <Provider store={store}>

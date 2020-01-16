@@ -1,13 +1,10 @@
-
-
-const artistsReducer = (state = {artist: {}, loggedIn: false}, action) => {
+const artistsReducer = (state = {artist: {}, loggedIn: false, authError: null}, action) => {
     switch(action.type) {
         case 'FETCH_ARTIST':
-            // console.log(action.loggedIn)
             return {
                 ...state,
                 artist: action.artist,
-                loggedIn: action.loggedIn
+                loggedIn: action.loggedIn,
             }
         case 'CREATE_ARTIST':
             // console.log(action.loading)
@@ -17,19 +14,28 @@ const artistsReducer = (state = {artist: {}, loggedIn: false}, action) => {
                 loggedIn: action.loggedIn
             }
         case 'LOGIN_ARTIST':
-            // console.log(action.artist)
+            console.log('login success')
             return {
                 ...state, 
                 artist: action.artist, 
-                loggedIn: action.loggedIn
+                loggedIn: action.loggedIn,
+                authError: 'LOGIN SUCCESS'
+            }
+        case 'LOGIN_FAILED': 
+        console.log('login failed')
+            return {
+                ...state, 
+                authError: 'LOGIN FAILED'
             }
         case 'LOGOUT_ARTIST':
-            return {artist: state.artist.id !== action.id }  
-            
+            return {
+                ...state,
+                artist: state.artist.id !== action.id,
+                authError: 'LOGOUT SUCCESS' 
+            }
         default:
             return state 
     }
-  
 }
 
 export default artistsReducer

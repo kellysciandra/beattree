@@ -16,6 +16,7 @@ class ArtistSignup extends Component {
     password: '',
     city: '',
     state: '',
+    link:''
   }
 
   handleChange = event => {
@@ -31,7 +32,7 @@ class ArtistSignup extends Component {
 
   render() {  
     //destructuring
-    const {email, password, city, state} = this.state
+    const {email, password, city, state, link} = this.state
    
     return (
       <div>
@@ -62,6 +63,11 @@ class ArtistSignup extends Component {
        <Form.Group as={Col} controlId="formGridState">
        <Form.Label>State</Form.Label>
        <Form.Control type="city" name="state" placeholder="city" onChange={this.handleChange} value={state} />
+       </Form.Group>
+       
+       <Form.Group as={Col} controlId="formGridState">
+       <Form.Label>State</Form.Label>
+       <Form.Control type="link" name="link" placeholder="link" onChange={this.handleChange} value={link} />
        </Form.Group>
        </Form.Row>
        <Button variant="dark" type="submit">Submit</Button>

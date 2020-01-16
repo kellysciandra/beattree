@@ -1,95 +1,65 @@
 import React, { Component } from 'react'
 import NavBar from '../layout/NavBar'
-
+import  { editArtist } from '../../actions/artistActions'
 import Button from 'react-bootstrap/Button'
 import { Col, Form } from "react-bootstrap";
-import axios from 'axios';
 import { connect } from 'react-redux';
 
 
 class ArtistUpload extends Component {
   
   state = {
-    title: '',
-    newFile: null,
-    artist_id: ''
+    link: ''
   }
 
-  
-  onFormSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData()
-    formData.append('file', this.state.newFile)
-    formData.append('artist_id', this.props.artist.id)
-    formData.append('title', this.state.title)
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
 
-    axios({
-      method: 'POST',
-      url: 'http://localhost:3001/beats',
-      data: formData,
-      config: { 
-        headers: {'Content-Type': 'multipart/form-data'}
-      }
-    }).then(response => console.log(response)) 
-    .then(this.redirect())          
-  };
-
-  redirect = () => {
-    this.props.history.push('/artist/show')
+  handleSubmit = (event) => { console.log(this.state)
+    event.preventDefault()
+    this.props.editArtist(this.state)
 }
 
-handleChange = (e) => {
-  this.setState({
-    newFile: e.currentTarget.files[0],
-  });
-};
 
-handleTitleChange = event => {
-  this.setState({
-    title: event.target.value
-  })
-}
+render() { console.log(this.props)
 
-// componentDidMount = () => {
-//   this.setState({
-//     artist_id: this.props.artist.id
-//   })
-// }
+  const {link} = this.state
 
-
-  
-  render() { 
     return (
-        <div>
-      <NavBar loggedInStatus={this.props.loggedInStatus} handleLogout={this.props.handleLogout} />
-      <Form className='signup' onSubmit={this.onFormSubmit}>
-      <h1 className='title'>Hello {this.props.artist.email}</h1>
-       <h3 className='sub-title'>Create a Profile</h3>
-      
-        <Form.Group  as={Col}  controlId="formGridTitle">
-        <Form.Label>Title</Form.Label>
-        <Form.Control type="title" placeholder="Beat Title" onChange={this.handleTitleChange}/>
-        </Form.Group>
-  
-  
-       <Form.Group  as={Col} controlId="formGridMP3">
-        <Form.Control className="upload" type="file" placeholder="Mp3" onChange={this.handleChange}/>
-      {this.props.type === "file" ? "files" : "mp3"}
-        </Form.Group>
-     
-        <Button variant="dark" type="submit">Submit</Button>
-      </Form>
+
+ 
+      <div>
+      <NavBar />
+       <Form className='signup' onSubmit={this.handleSubmit}>
+       <Form.Row>
+        <Form.Group as={Col} controlId="formGridState">
+       <Form.Label></Form.Label>
+       <Form.Control type="link" name="link" placeholder="link" onChange={this.handleChange} value={link} />
+       </Form.Group>
+       </Form.Row>
+       <Button variant="dark" type="submit">Submit</Button>
+     </Form>
+
+
       </div>
    )
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    user: state.currentUser
+    artist: state.artist,
+    loggedIn: state.loggedIn
   }
 }
 
+const mapDispatchToProps= dispatch => {
+  return {
+    editArtist: (artist) => dispatch(editArtist(artist))
+  }
+}
 
-
-export default connect(mapStateToProps)(ArtistUpload)
+export default connect(null, mapDispatchToProps)(ArtistUpload)

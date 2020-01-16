@@ -1,54 +1,40 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
 import Navbar from 'react-bootstrap/Navbar'
-import  { logoutArtist } from '../../actions/artistActions'
+import SignedInLinks from './SignedInLinks'
+import SignedOutLinks from './SignedOutLinks'
+
 
 
 class NavBar extends Component{
- 
-    handleLogoutClick = () => {
-      this.props.logoutArtist(this.props.artist.id)
-    }
-
-    componentDidMount = () =>  {
-    }
-
-    // setUser = () => { console.log(this.props.artist)
-    //     if (this.props.artist.id === true){
-    //     return (
-    //       <div className='current-user'>
-    //       artist:{this.props.artist.email}
-    //       </div>
-    //     )
-    //    }
-    // }
     
-  render() { console.log(this.props)
-    // artist = this.state.artist.email;
+  render() {
+
+   const links = this.props.loggedIn? <SignedInLinks history={this.props.history} /> : <SignedOutLinks />
 
       return (
         <div className='nav-bar'>
         <Navbar expand="sm" variant="dark">
-            <Navbar.Brand href="/">BeatTree</Navbar.Brand>
-            <NavLink to="/artist/ArtistLogin" style={{ marginRight: 10 }}>Artist</NavLink> 
-            <NavLink to="/producer/ProducerSignup" style={{ marginRight: 10 }}>Producer</NavLink>
-            <Navbar.Brand onClick={() => this.handleLogoutClick()} >logout</Navbar.Brand>
+            { links }
+            <div className='current-user'>
+              {this.props.artist.email}
+            </div>
         </Navbar>
+        
       </div>
-     
       )
-   
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = (state) => {
   return {
-    logoutArtist: (artist) => dispatch(logoutArtist(artist)) 
+    artist: state.artist.artist,
+    loggedIn: state.artist.loggedIn,
+    authError: state.artist.authError
   }
 }
 
-export default connect(null, mapDispatchToProps)(NavBar)
+export default connect(mapStateToProps)(NavBar)
 
 
 
