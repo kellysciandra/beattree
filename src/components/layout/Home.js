@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-// import Beats from '../audio/Beats'
-// import { NavLink } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import  { loadBeats } from '../../actions/beatActions'
-import NavBar from './NavBar'
-// import mp3 from "../audio/audio.mp3";
+import  { addToFavorites } from '../../actions/beatActions'
 import ReactPlayer from "react-player"
+import Card from 'react-bootstrap/Card'
 
 class Home extends Component {
+
+  state= {
+    current_artist: '',
+    favorite_artist:''
+  }
 
   componentDidMount() {
     this.props.loadBeats()
@@ -18,57 +21,46 @@ class Home extends Component {
     event.preventDefault()
   }
 
+  handleClick = (favorite_artist_id) => {
+    this.setState({
+      current_artist: this.props.artist.id,
+      favorite_artist: favorite_artist_id
+    })
+    console.log(this.state)
+    this.render()
+    this.addToFavorites()
+  }
 
-    render() {  console.log(this.props)
-      
-      
-      const links = this.props.beats.map((artist) =>  <ReactPlayer 
-      className='react-player'
-      key={artist.id}
-      url={artist.link}
-        width='100%'
-        height='50%'
-      />)
-    
 
+  addToFavorites= ()=> { 
+   this.props.addToFavorites(this.state)
+  }
+
+
+    render() {  
+      
+      const players = this.props.beats.map( (beat, key) => 
+      <ReactPlayer 
+        id={beat.id}
+        className='react-player' 
+        key={beat.id} 
+        url={beat.link} 
+        width='100%' 
+        height='50%'/>,
+        )
+      
+        const card = players.map(link => 
+        <Card 
+        className='container-2'>
+        {link}
+        <Button onClick={() => {this.handleClick(link.key)}} className="button-2">ADD TO FAVORITES</Button>
+        <Button className="button-2">SEND MESSAGE</Button>
+        </Card>
+        )
         return  (
             <div>
-                    <NavBar loggedIn={this.props.loggedIn} artist={this.props.artist} />
                 <h2 className= "logo"> BeatTree </h2>
-                    {/* <Button onClick={this.handlePlay.bind(this)} variant="light" className='container-1'>▶
-                    </Button>
-                    <Button variant="light"  className='container-1'>▶
-                    </Button>
-                    <Button variant="light"  className='container-1'>▶
-                    </Button>
-                    <Button variant="light"  className='container-2'>▶
-                    </Button>
-                    <Button variant="light"  className='container-2'>▶
-                    </Button>
-                    <Button variant="light"  className='container-2'>▶
-                    </Button> */}
-                    <div className='player-wrapper'>
-                    {/* <ReactPlayer 
-                    className='react-player'
-                    url="https://soundcloud.com/roddyricch/the-box"
-                      width='50%'
-                      height='50%'
-                    />
-                       <ReactPlayer 
-                    className='react-player'
-                    url="https://soundcloud.com/roddyricch/the-box"
-                      width='50%'
-                      height='50%'
-                    />
-                       <ReactPlayer 
-                    className='react-player'
-                    url={links}
-                      width='50%'
-                      height='50%'
-                    /> */}
-                    
-                    </div>
-                   {links}
+                <span >{card}</span>
              </div>
         )
     }
@@ -76,13 +68,15 @@ class Home extends Component {
 
 const mapStateToProps = (state)  => {
     return {
+      artist: state.artist.artist,
       beats: state.beat.beats
     }
   }
 
   const mapDispatchToProps = dispatch => {
     return {
-     loadBeats: () => dispatch(loadBeats())
+     loadBeats: () => dispatch(loadBeats()),
+     addToFavorites: (id) => dispatch(addToFavorites(id))
     }
   }
 

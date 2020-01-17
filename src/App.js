@@ -1,9 +1,10 @@
 import React, { Component }from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { Router, Switch, Route } from 'react-router-dom'
 import  { fetchArtist } from './actions/artistActions'
 
 import Home from './components/layout/Home'
+import NavBar from './components/layout/NavBar'
 import ArtistLogin from './components/artist/ArtistLogin'
 import ArtistSignup from './components/artist/ArtistSignup'
 import ArtistUpload from './components/artist/ArtistUpload'
@@ -23,15 +24,16 @@ class App extends Component {
   render() { 
     return (
       <div>
-         <BrowserRouter history={history}>
+         <Router history={history}>
+          <NavBar history={history} />
           <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Home}/>
           <Route exact path="/artist/ArtistLogin" component={ArtistLogin} />
           <Route exact path="/artist/ArtistSignup" component={ArtistSignup} />  
           <Route exact path="/artist/ArtistUpload" component={ArtistUpload} />  
           <Route exact path="/artist" component={Artist} />
           </Switch>
-        </BrowserRouter>
+        </Router>
       </div>
     );
   }

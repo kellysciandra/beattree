@@ -7,7 +7,6 @@ const artistsReducer = (state = {artist: {}, loggedIn: false, authError: null}, 
                 loggedIn: action.loggedIn,
             }
         case 'CREATE_ARTIST':
-            // console.log(action.loading)
             return {
                 ...state,
                 artist: action.artist,

@@ -36,7 +36,6 @@ class ArtistSignup extends Component {
    
     return (
       <div>
-      <NavBar />
       <h1 className='title'>Hello Artist</h1>
       <h3 className='sub-title'>Create a Profile</h3>
       
@@ -66,7 +65,7 @@ class ArtistSignup extends Component {
        </Form.Group>
        
        <Form.Group as={Col} controlId="formGridState">
-       <Form.Label>State</Form.Label>
+       <Form.Label>Link</Form.Label>
        <Form.Control type="link" name="link" placeholder="link" onChange={this.handleChange} value={link} />
        </Form.Group>
        </Form.Row>

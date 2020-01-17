@@ -51,8 +51,8 @@ render() { console.log(this.props)
 
 const mapStateToProps = (state) => {
   return {
-    artist: state.artist,
-    loggedIn: state.loggedIn
+    artist: state.artist.artist,
+    loggedIn: state.artist.loggedIn
   }
 }
 
@@ -62,4 +62,4 @@ const mapDispatchToProps= dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(ArtistUpload)
+export default connect(mapStateToProps, mapDispatchToProps)(ArtistUpload)

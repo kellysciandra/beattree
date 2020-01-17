@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
-import NavBar from '../layout/NavBar'
 import { connect } from 'react-redux'
-import ArtistUpload from './ArtistUpload'
 import ReactPlayer from "react-player"
 
 class Artist extends Component {
@@ -30,18 +28,17 @@ class Artist extends Component {
     render() { 
         return (
             <div>
-              <NavBar />
-     
+    
                 <br></br><br></br><br></br><br></br>
 
-                <Card  className='container-2' style={{ width: '55rem', display: 'flex' }}>
-                <div className='card-title'>{this.props.artist.artist.email}</div> 
+                <Card className='container-2'>
+                <div className='card-title'>PROFILE</div> 
+                <div className='card-sub-title'>{this.props.artist.artist.email}</div>
                 <div className='card-sub-title'>{this.props.artist.artist.city}, {this.props.artist.artist.state}</div>
-                <Button className='button' type="button" onClick={this.handleMessages} >Check Messages</Button>
                 <Button className='button' type="button" onClick={this.handleSubmit} >Upload New Beat</Button> 
                 <Button className='button' type="button" onClick={this.handleSubmit} >Delete Beat</Button> 
                 <ReactPlayer 
-                    className='audio'
+                    className='react-player'
                     key={this.props.artist.artist.id}
                     url={this.props.artist.artist.link}
                     width='100%'
@@ -49,6 +46,15 @@ class Artist extends Component {
                     />
                 </Card>
                 <div>
+                <Card className='container-2'>
+                <div className='card-title'>FAVORITES</div> 
+                </Card>
+                </div>
+
+                <div>
+                <Card className='container-2'>
+                <div className='card-title'>MESSAGES</div> 
+                </Card>
                 </div>
 
 

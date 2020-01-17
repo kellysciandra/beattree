@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from 'react-bootstrap/Button'
 import { Col, Form } from "react-bootstrap";
-import NavBar from '../layout/NavBar'
 import { Link } from 'react-router-dom'
 import  { loginArtist } from '../../actions/artistActions'
 import { Redirect } from 'react-router-dom'
@@ -36,7 +35,7 @@ class ArtistLogin extends Component {
 
     }
 
-    render() { console.log(this.props)
+    render() { 
         // destructuring
         const {email, password} = this.state
         
@@ -45,7 +44,7 @@ class ArtistLogin extends Component {
        
     return ( 
         <div>
-         <NavBar artist={this.props.artist} loggedIn={this.props.loggedIn}/>
+         {/* <NavBar /> */}
         <h1 className='title'>Login u Artist</h1>
        <Form className='signup' onSubmit={this.handleSubmit}>
          <Form.Row>

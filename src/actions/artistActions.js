@@ -66,7 +66,7 @@ export const editArtist = (artist) => { console.log(artist)
   }
 }
 
-export const loginArtist = (artist) => {
+export const loginArtist = (artist) => { console.log(artist)
     return(dispatch) => { 
         axios
         .post(  
@@ -94,7 +94,6 @@ export const loginArtist = (artist) => {
         })
     }
 }
-
 
 export const logoutArtist = (artist) => { console.log(artist)
     return(dispatch) => { 

@@ -29,8 +29,8 @@ class SignedInLinks extends Component {
 
 const mapStateToProps = (state)  => {
   return {
-    artist: state.artist,
-    loggedIn: state.loggedIn
+    artist: state.artist.artist,
+    loggedIn: state.artist.loggedIn
   }
 }
 

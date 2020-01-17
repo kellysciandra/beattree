@@ -8,7 +8,7 @@ import SignedOutLinks from './SignedOutLinks'
 
 class NavBar extends Component{
     
-  render() {
+  render() { 
 
    const links = this.props.loggedIn? <SignedInLinks history={this.props.history} /> : <SignedOutLinks />
 
