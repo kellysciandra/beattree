@@ -2,6 +2,7 @@ import React, { Component }from 'react';
 import { connect } from 'react-redux';
 import { Router, Switch, Route } from 'react-router-dom'
 import  { fetchArtist } from './actions/artistActions'
+import  { fetchFavorites } from './actions/beatActions'
 
 import Home from './components/layout/Home'
 import NavBar from './components/layout/NavBar'
@@ -19,6 +20,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.fetchArtist()
+    this.props.fetchFavorites()
   }
 
   render() { 
@@ -48,7 +50,8 @@ const mapStateToProps = (state)  => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchArtist: () => dispatch(fetchArtist())
+    fetchArtist: () => dispatch(fetchArtist()),
+    fetchFavorites: () => dispatch(fetchFavorites())
   }
 }
 

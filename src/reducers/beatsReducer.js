@@ -1,4 +1,4 @@
-const beatsReducer = (state = {beats: []}, action) => {
+const beatsReducer = (state = {beats: [], artist_favorites:[]}, action) => {
     switch(action.type) { 
         case 'LOAD_BEATS':
             return {
@@ -6,9 +6,17 @@ const beatsReducer = (state = {beats: []}, action) => {
             }
 
             case 'ADD_TO_FAVORITES':
-                console.log('titty')
+      
+                return {
+                    ...state,
+                 artist_favorites: action.favorites
+                }
+
+            case 'DISPLAY_FAVORITES':
+                    console.log(action.favorites)
                 return {
                     ...state, 
+                artist_favorites: action.favorites
                 }
         default:
             return state 

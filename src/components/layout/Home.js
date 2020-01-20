@@ -8,11 +8,6 @@ import Card from 'react-bootstrap/Card'
 
 class Home extends Component {
 
-  state= {
-    current_artist: '',
-    favorite_artist:''
-  }
-
   componentDidMount() {
     this.props.loadBeats()
   }
@@ -21,39 +16,28 @@ class Home extends Component {
     event.preventDefault()
   }
 
-  handleClick = (favorite_artist_id) => {
-    this.setState({
-      current_artist: this.props.artist.id,
-      favorite_artist: favorite_artist_id
-    })
-    console.log(this.state)
-    this.render()
-    this.addToFavorites()
+  handleClick = (favorite_artist_id, link) => { 
+    this.props.addToFavorites(favorite_artist_id, this.props.artist.id, link)
   }
 
 
-  addToFavorites= ()=> { 
-   this.props.addToFavorites(this.state)
-  }
-
-
-    render() {  
-      
+    render() {  console.log(this.props)
       const players = this.props.beats.map( (beat, key) => 
       <ReactPlayer 
         id={beat.id}
         className='react-player' 
         key={beat.id} 
-        url={beat.link} 
+        url={beat.link}
+        link={beat.link} 
         width='100%' 
         height='50%'/>,
         )
       
-        const card = players.map(link => 
+        const card = players.map(link =>  
         <Card 
         className='container-2'>
         {link}
-        <Button onClick={() => {this.handleClick(link.key)}} className="button-2">ADD TO FAVORITES</Button>
+        <Button onClick={() => {this.handleClick(link.key, link.props.link)}} className="button-2">ADD TO FAVORITES</Button>
         <Button className="button-2">SEND MESSAGE</Button>
         </Card>
         )
@@ -66,7 +50,7 @@ class Home extends Component {
     }
 }
 
-const mapStateToProps = (state)  => {
+const mapStateToProps = (state)  => { 
     return {
       artist: state.artist.artist,
       beats: state.beat.beats
@@ -76,7 +60,7 @@ const mapStateToProps = (state)  => {
   const mapDispatchToProps = dispatch => {
     return {
      loadBeats: () => dispatch(loadBeats()),
-     addToFavorites: (id) => dispatch(addToFavorites(id))
+     addToFavorites: (favorite_artist_id, current_artist_id, link) => dispatch(addToFavorites(favorite_artist_id, current_artist_id, link))
     }
   }
 

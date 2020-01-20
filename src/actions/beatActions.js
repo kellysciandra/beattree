@@ -12,17 +12,38 @@ export const loadBeats = () => {
   }
 
 
-  export const addToFavorites = (action) => { console.log(action)
+  export const addToFavorites = (favorite_artist_id, current_artist_id, link) => { 
     return(dispatch) => {
       axios
       .post(  
         'http://localhost:3001/favorites', 
         {
-            favorite_artist_id: action.favorite_artist,
-            artist_id: action.current_artist
+            favorite_artist_id: favorite_artist_id,
+            artist_id: current_artist_id, 
+            link: link
         },
       { withCredentials: true },
     )
-    .then(response => console.log(response))
+    .then(response => { console.log(response)
+      dispatch({
+        type: 'ADD_TO_FAVORITES',
+        favorites: response.data.favorites.favorite_artist_id
+      })
+    })
     }
   }
+
+
+
+  export const fetchFavorites = () => {
+    return(dispatch) => { 
+     axios
+      .get('http://localhost:3001/favorites', { withCredentials: true})
+      .then(response => { console.log(response)
+        dispatch({
+          type: 'DISPLAY_FAVORITES',
+          favorites: response.data.favorites
+        })
+      })
+    }
+}
