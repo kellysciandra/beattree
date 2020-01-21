@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import {connect} from 'react-redux' 
 import Button from 'react-bootstrap/Button'
 import { Col, Form } from "react-bootstrap";
-import NavBar from '../layout/NavBar'
 import  { createArtist } from '../../actions/artistActions'
 // import Artist from './Artist'
 
@@ -25,7 +24,7 @@ class ArtistSignup extends Component {
     })
   }
 
-  handleSubmit = (event) => { console.log(this.state)
+  handleSubmit = (event) => { 
     event.preventDefault()
     this.props.createArtist(this.state)
 }

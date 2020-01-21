@@ -32,19 +32,15 @@ class ArtistLogin extends Component {
     handleSubmit = (event) => { 
         event.preventDefault() 
         this.props.loginArtist(this.state)
-
     }
 
-    render() { 
+    render() { console.log(this.props)
         // destructuring
         const {email, password} = this.state
         
-      if (this.props.authError === 'LOGIN SUCCESS') return <Redirect to='/artist'/>
-        
-       
+      if (this.props.authError === 'LOGIN SUCCESS') return <Redirect to='/'/>
     return ( 
         <div>
-         {/* <NavBar /> */}
         <h1 className='title'>Login u Artist</h1>
        <Form className='signup' onSubmit={this.handleSubmit}>
          <Form.Row>
@@ -70,8 +66,6 @@ class ArtistLogin extends Component {
 
 const mapStateToProps = (state)  => {
     return {
-      artist: state.artist.artist,
-      loggedIn: state.artist.loggedIn,
       authError: state.artist.authError
     }
   }

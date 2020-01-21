@@ -4,11 +4,16 @@ import Card from 'react-bootstrap/Card'
 import { connect } from 'react-redux'
 import ReactPlayer from "react-player"
 
-
 class Artist extends Component {
 
+
+
+
+   componentDidMount() {
+   }
+
     handleSubmit= () => {
-        this.props.history.push('/artist/ArtistUpload'); 
+        this.props.history.push('/artist/ArtistEdit'); 
         // brings you to edit beat section
       }
 
@@ -17,28 +22,36 @@ class Artist extends Component {
           // brings you to messaging platform
       }
 
+    //   renderFavorites = () => this.props.favorites.map((favorite,id) => {
+    //     return <ReactPlayer className='react-player' key={id} id={id} url={favorite.link} width='100%'
+    //     height='50%'/>
+    //   })
+
+
+
     render() { 
 
-        const favorites = this.props.artist_favorites.map((favorite, id) => 
-        <ReactPlayer 
-        className='react-player'
-        key={id}
-        url={favorite.link}
-        width='100%'
-        height='50%'
-        />)
+    const favorites = this.props.loggedIn? this.props.favorites.map((favorite, id) =>
+    <ReactPlayer 
+    className='react-player'
+    key={id}
+    url={favorite.link}
+    width='100%'
+    height='50%'
+    />):<div>LOADINGGGGG</div>
+
+    // const messages = this.props.messages ?  this.props.messages.map((message,id) => message):<div>LOADINGGGGG</div>
+
+       
 
         return (
             <div>
-    
-                <br></br><br></br><br></br><br></br>
-
+                <br></br><br></br><br></br><br></br> 
                 <Card className='container-2'>
-                <div className='card-title'>PROFILE</div> 
+                <div className='card-title'>Artist</div> 
                 <div className='card-sub-title'>{this.props.artist.email}</div>
                 <div className='card-sub-title'>{this.props.artist.city}, {this.props.artist.state}</div>
-                <Button className='button' type="button" onClick={this.handleSubmit} >Edit Beat</Button> 
-                <Button className='button' type="button" onClick={this.handleSubmit} >Delete Beat</Button> 
+                <Button className='button' type="button" onClick={this.handleSubmit} >Edit Beat</Button>
                 <ReactPlayer 
                     className='react-player'
                     key={this.props.artist.id}
@@ -56,7 +69,8 @@ class Artist extends Component {
 
                 <div>
                 <Card className='container-2'>
-                <div className='card-title'>MESSAGES</div> 
+                <div className='card-title'>MESSAGES</div>  
+                {/* <div>{messages}</div> */}
                 </Card>
                 </div>
 
@@ -66,11 +80,12 @@ class Artist extends Component {
     }
 }
 
-const mapStateToProps = (state) => { console.log(state)
+const mapStateToProps = (state) => { 
     return {
       artist: state.artist.artist,
       loggedIn: state.artist.loggedIn,
-      artist_favorites: state.beat.artist_favorites
+      favorites: state.artist.favorites,
+      messages: state.artist.messages
     }
   }
 

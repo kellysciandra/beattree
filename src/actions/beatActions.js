@@ -24,7 +24,7 @@ export const loadBeats = () => {
         },
       { withCredentials: true },
     )
-    .then(response => { console.log(response)
+    .then(response => {
       dispatch({
         type: 'ADD_TO_FAVORITES',
         favorites: response.data.favorites.favorite_artist_id
@@ -33,17 +33,34 @@ export const loadBeats = () => {
     }
   }
 
-
-
   export const fetchFavorites = () => {
     return(dispatch) => { 
      axios
       .get('http://localhost:3001/favorites', { withCredentials: true})
-      .then(response => { console.log(response)
+      .then(response => { 
         dispatch({
           type: 'DISPLAY_FAVORITES',
           favorites: response.data.favorites
         })
       })
     }
+}
+
+
+export const editBeat = (artist) => { 
+  return(dispatch) => {
+    axios
+    .patch(
+      'http://localhost:3001/artists/`#{artist_id}`', 
+      {
+     
+        link: artist.link
+
+      },
+      { withCredentials: true },
+    )
+    .then(response => {
+      console.log(response)
+    })
+  }
 }

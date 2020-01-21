@@ -75,7 +75,15 @@ html {
 .signup {
   display: inline-block;
   font-family: 'Concert One', cursive;
+}
 
+.send-message {
+  font-family: 'Concert One', cursive;
+  background-color:#29e0a3;
+  margin-top: 15px;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-bottom: 5px
 }
 
 .logo {
@@ -129,6 +137,17 @@ html {
   border-radius: 8px;
 }
 
+.button-back {
+  font-family: 'Concert One', cursive;
+  color: black;
+
+  margin-top: 15px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
 .upload {
   padding: 0.2em;
   cursor: pointer;
@@ -150,4 +169,9 @@ html {
   background-color:#39a0ca;
   font-family: 'Concert One', cursive;
   margin-right: 1200px;
+}
+
+
+.chat-window { 
+  box-sizing: border-box;
 }

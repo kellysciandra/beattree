@@ -2,24 +2,24 @@ import axios from 'axios'
 
 
 export const fetchArtist = () => {
-    return(dispatch) => {
-     axios
-      .get('http://localhost:3001/logged_in', { withCredentials: true})
-      .then(response => { 
-          if (
-              response.data.logged_in 
-          ) {
-            dispatch({ type: 'FETCH_ARTIST', 
-            artist: response.data.artist,
-            loggedIn: response.data.logged_in})
-          }
-      })
-    }
+  return(dispatch, getState) => {
+   axios
+    .get('http://localhost:3001/logged_in', { withCredentials: true})
+    .then(response => { 
+        if ( response.data.logged_in ) { 
+          dispatch({ type: 'FETCH_ARTIST', 
+          artist: response.data.artist,
+          loggedIn: response.data.logged_in,
+          favorites: response.data.favorites,
+          messages: response.data.messages})
+        }
+    })
+  }
 }
 
 
 export const createArtist = (artist) => {
-    return(dispatch) => { 
+    return(dispatch, getState) => { 
         axios
         .post(  
           'http://localhost:3001/artists', 
@@ -43,8 +43,8 @@ export const createArtist = (artist) => {
     }
 }
 
-export const editArtist = (artist) => { console.log(artist)
-  return(dispatch) => {
+export const editArtist = (artist) => { 
+  return(dispatch, getState) => {
     axios
     .patch(
       'http://localhost:3001/artists/`#{artist.id}`', 
@@ -66,8 +66,8 @@ export const editArtist = (artist) => { console.log(artist)
   }
 }
 
-export const loginArtist = (artist) => { console.log(artist)
-    return(dispatch) => { 
+export const loginArtist = (artist) => { 
+    return(dispatch, getState) => { 
         axios
         .post(  
           'http://localhost:3001/sessions', 
@@ -96,16 +96,28 @@ export const loginArtist = (artist) => { console.log(artist)
 }
 
 export const logoutArtist = (artist) => { console.log(artist)
-    return(dispatch) => { 
+    return(dispatch, getState) => { 
         axios
         .delete(  'http://localhost:3001/logout', { withCredentials: true },)
-        .then(response => { 
+        .then(response => { console.log(response)
             if (response.data.logged_in) {
                 dispatch({ type: 'LOGOUT_ARTIST', artist: response.data.artist.id})
           }     
         })
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
