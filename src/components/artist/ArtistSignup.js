@@ -3,7 +3,8 @@ import {connect} from 'react-redux'
 import Button from 'react-bootstrap/Button'
 import { Col, Form } from "react-bootstrap";
 import  { createArtist } from '../../actions/artistActions'
-// import Artist from './Artist'
+import { Redirect } from 'react-router-dom'
+
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
@@ -30,15 +31,18 @@ class ArtistSignup extends Component {
 }
 
   render() {  
+    if (this.props.authError === 'SIGNUP SUCCESS') return <Redirect to='/'/>
+
     //destructuring
     const {email, password, city, state, link} = this.state
+    
    
     return (
       <div>
-      <h1 className='title'>Hello Artist</h1>
+      <h1 className='signup-title'>ARTIST SIGNUP</h1>
       <h3 className='sub-title'>Create a Profile</h3>
       
-     <Form className='signup' onSubmit={this.handleSubmit}>
+     <Form className='signup-form' onSubmit={this.handleSubmit}>
        <Form.Row>
 
        <Form.Group controlId="formGridEmail">
@@ -63,11 +67,14 @@ class ArtistSignup extends Component {
        <Form.Control type="city" name="state" placeholder="city" onChange={this.handleChange} value={state} />
        </Form.Group>
        
-       <Form.Group as={Col} controlId="formGridState">
-       <Form.Label>Link</Form.Label>
+       <Form.Group as={Col} controlId="formGridLink">
+       <Form.Label for='validationServer01' >SoundCloud Link</Form.Label>
        <Form.Control type="link" name="link" placeholder="link" onChange={this.handleChange} value={link} />
+       <div class='valid-feedback'>looks good</div>
        </Form.Group>
        </Form.Row>
+       <span className="login-failed">{this.props.authError}</span><br></br><br></br>
+
        <Button variant="dark" type="submit">Submit</Button>
      </Form>
    </div>
@@ -76,10 +83,16 @@ class ArtistSignup extends Component {
   }
 };
 
+const mapStateToProps = (state)  => {console.log(state)
+  return {
+    authError: state.artist.authError
+  }
+}
+
 const mapDispatchToProps= dispatch => {
   return {
     createArtist: (artist) => dispatch(createArtist(artist))
   }
 }
 
-export default connect(null, mapDispatchToProps)(ArtistSignup)
+export default connect(mapStateToProps, mapDispatchToProps)(ArtistSignup)

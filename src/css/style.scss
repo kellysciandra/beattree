@@ -2,12 +2,7 @@
 
 * {
   text-align: center;
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  background-color:#39a0ca
+  background-color:#39a0ca;
 }
 
 html {
@@ -15,11 +10,7 @@ html {
   font-family: 'IBM Plex Serif', serif;
 }
 
-@media screen and (max-width: 500px) {
-  html {
-    font-size: 10px;
-  }
-}
+
 
 .container-1 {
   background-color: #f95d9b;
@@ -41,17 +32,26 @@ html {
   border-radius: 20px;
 }
 
-.caption {
-  text-transform: uppercase;
-  font-weight: 300;
+//homepage
+
+.main-card {
+  background-color:#29e0a3;
+  padding: 15px;
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-bottom: 50px;
+  margin-top: -10px;
+  border-radius: 20px;
 }
 
-/* Music Panel related */
-
-.music-panel {
-  display: grid;
-  grid-template-columns: 1fr;
+.logo {
+  font-family: 'Concert One', cursive;
+  font-size: 15em;
+  margin-left: 20px;
+  margin-bottom: 25px
 }
+
+//navbar
 
 .nav-bar {
   text-align: center;
@@ -72,49 +72,17 @@ html {
   background-color: #f95d9b
 }
 
-.signup {
-  display: inline-block;
-  font-family: 'Concert One', cursive;
-}
+//buttons
 
-.send-message {
+.main-card-buttons {
+  background-color: #f95d9b;
   font-family: 'Concert One', cursive;
-  background-color:#29e0a3;
-  margin-top: 15px;
-  margin-left: 25px;
-  margin-right: 25px;
-  margin-bottom: 5px
-}
-
-.logo {
-  font-family: 'Concert One', cursive;
-  font-size: 15em;
+  color: black;
+  padding: 10px;
   margin-left: 20px;
-  margin-bottom: 25px
-}
-
-.title {
-  font-family: 'Concert One', cursive;
-  font-size: 3em;
-  margin-top: 30px;
-  margin-left: 20px;
-  margin-bottom: 25px
-}
-.card-title {
-  background-color:#29e0a3;
-  font-family: 'Concert One', cursive;
-  font-size: 3em;
-  margin-top: 30px;
-  margin-left: 20px;
-  margin-bottom: 25px
-}
-
-.card-sub-title {
-  background-color:#29e0a3;
-  font-family: 'Concert One', cursive;
-  font-size: 2em;
-  margin-left: 20px;
-  margin-bottom: 25px
+  margin-bottom: 20px;
+  margin-right: 20px;
+  border-radius: 8px;
 }
 
 .button {
@@ -148,6 +116,118 @@ html {
   border-radius: 8px;
 }
 
+
+//login
+
+.log-in {
+  display: inline-block;
+  font-family: 'Concert One', cursive;
+  background-color:#39a0ca;
+}
+
+.login-title{
+  font-family: 'Concert One', cursive;
+  font-size: 4em;
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-bottom: 20px
+}
+
+//signup
+
+.signup-title{
+  font-family: 'Concert One', cursive;
+  font-size: 4em;
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-bottom: -10px
+}
+
+.sub-title {
+  font-family: 'Concert One', cursive;
+  font-size: 2em;
+  text-decoration: underline;
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-bottom: 40px
+}
+
+.signup-form {
+  display: inline-block;
+  font-family: 'Concert One', cursive;
+  border-radius: 8px;
+}
+
+
+//alerts
+
+.login-failed {
+  text-align: center;
+  font-family: 'Concert One', cursive;
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: -15px;
+  font-size: 40px;
+  display: flex;
+  justify-content: space-around;
+  background-color: #f95d9b
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.signup {
+  display: inline-block;
+  font-family: 'Concert One', cursive;
+}
+
+.send-message {
+  font-family: 'Concert One', cursive;
+  background-color:#29e0a3;
+  margin-top: 15px;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-bottom: 5px
+}
+
+
+.card-title {
+  background-color:#29e0a3;
+  font-family: 'Concert One', cursive;
+  font-size: 3em;
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-bottom: 25px
+}
+
+.card-sub-title {
+  background-color:#29e0a3;
+  font-family: 'Concert One', cursive;
+  font-size: 2em;
+  margin-left: 20px;
+  margin-bottom: 25px
+}
+
+
+
 .upload {
   padding: 0.2em;
   cursor: pointer;
@@ -171,6 +251,11 @@ html {
   margin-right: 1200px;
 }
 
+.messages {
+  font-family: 'Concert One', cursive;
+  font-size: 30px;
+  background-color:#29e0a3;
+}
 
 .chat-window { 
   box-sizing: border-box;

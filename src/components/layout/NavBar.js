@@ -10,27 +10,25 @@ class NavBar extends Component{
     
   render() { 
 
-   const links = this.props.loggedIn? <SignedInLinks history={this.props.history} /> : <SignedOutLinks />
+   const links = this.props.loggedIn? <SignedInLinks/> : <SignedOutLinks />
 
       return (
         <div className='nav-bar'>
         <Navbar expand="sm" variant="dark">
             { links }
             <div className='current-user'>
-              {this.props.artist.email}
+              {/* {this.props.artist.email} */}
             </div>
         </Navbar>
-        
       </div>
       )
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => { 
   return {
     artist: state.artist.artist,
     loggedIn: state.artist.loggedIn,
-    authError: state.artist.authError
   }
 }
 

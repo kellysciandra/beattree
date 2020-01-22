@@ -1,13 +1,12 @@
 import axios from 'axios'
 
-export const sendMessage = ( current_artist_id, favorite_artist_id, message) => { 
-    return(dispatch) => { 
+export const sendMessage = ( reciever, message) => { 
+    return(dispatch) => {  console.log(reciever, message)
       axios
       .post(  
         'http://localhost:3001/messages', 
         {
-            sender_id: current_artist_id,
-            artist_id: favorite_artist_id, 
+            artist_id: reciever, 
             message: message
         },
       { withCredentials: true },
@@ -22,13 +21,13 @@ export const sendMessage = ( current_artist_id, favorite_artist_id, message) => 
   }
 
 
-  export const loadMessages = () => {
-    return(dispatch) => { 
-     axios
-      .get('http://localhost:3001/messages', { withCredentials: true})
-      .then(response => { console.log(response.data.messages)
-        dispatch({ type: 'LOAD_MESSAGES', 
-        messages: response.data.messages})
-      })
-    }
-}
+//   export const loadMessages = () => {
+//     return(dispatch) => { 
+//      axios
+//       .get('http://localhost:3001/messages', { withCredentials: true})
+//       .then(response => { console.log(response.data.messages)
+//         dispatch({ type: 'LOAD_MESSAGES', 
+//         messages: response.data.messages})
+//       })
+//     }
+// }

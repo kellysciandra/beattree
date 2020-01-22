@@ -17,11 +17,6 @@ class ArtistLogin extends Component {
         password: '',
     }
 
-    componentWillMount = () => {
-        // if (this.props.artist)
-        // console.log(this.props.artist)
-        // this.props.history.push('/artist')
-    }
 
     handleChange = event => {
         this.setState({
@@ -39,10 +34,11 @@ class ArtistLogin extends Component {
         const {email, password} = this.state
         
       if (this.props.authError === 'LOGIN SUCCESS') return <Redirect to='/'/>
+
     return ( 
         <div>
-        <h1 className='title'>Login u Artist</h1>
-       <Form className='signup' onSubmit={this.handleSubmit}>
+        <h1 className='login-title'>ARTIST LOGIN</h1>
+       <Form className='log-in' onSubmit={this.handleSubmit}>
          <Form.Row>
          <Form.Group controlId="formGridEmail">
          <Form.Label>Email</Form.Label>
@@ -53,8 +49,8 @@ class ArtistLogin extends Component {
          <Form.Control type="password" name="password" placeholder="Password"  onChange={this.handleChange} value={password} />
          </Form.Group>
          </Form.Row>
-         <span className="nav-bar">{this.props.authError}</span><br></br><br></br>
-         <Button variant="dark" type="submit">Login</Button>
+         <span className="login-failed">{this.props.authError}</span><br></br><br></br>
+         <Button variant="dark" type="submit">Login</Button><br></br>
          <div>
             or <Link to='/artist/ArtistSignup'>sign up</Link>
           </div>
@@ -64,7 +60,7 @@ class ArtistLogin extends Component {
     }
 }
 
-const mapStateToProps = (state)  => {
+const mapStateToProps = (state)  => {console.log(state)
     return {
       authError: state.artist.authError
     }
@@ -73,6 +69,7 @@ const mapStateToProps = (state)  => {
 const mapDispatchToProps= dispatch => {
     return {
       loginArtist: (artist) => dispatch(loginArtist(artist))
+      
     }
   }
 

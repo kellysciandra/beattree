@@ -1,38 +1,54 @@
-const artistsReducer = (state = {artist: {}, favorites: {}, messages: {}, loggedIn: false, authError: null}, action) => {
+const artistsReducer = (state = {artist: [], favorites: {}, loggedIn: false, authError: null}, action) => {
     switch(action.type) {
         case 'FETCH_ARTIST':
             console.log('fetch success', action)
             return { 
-                ...state,
                 artist: action.artist,
                 favorites: action.favorites,
                 messages: action.messages,
-                loggedIn: action.loggedIn,
-                authError: 'ACTIVE_USER'
+                loggedIn: action.loggedIn
             }
+            
         case 'CREATE_ARTIST':
+            console.log('created', action)
             return {
-                ...state,
+                artist: action.artist, 
+                loggedIn: true,
+                favorites: action.favorites,
+                messages: action.messages, 
+                authError: 'SIGNUP SUCCESS'
             }
+
         case 'LOGIN_ARTIST':
-            // console.log('login success', action)
+            console.log('login success', action)
             return {
-                ...state, 
+                artist: action.artist, 
+                loggedIn: action.loggedIn,
+                favorites: action.favorites,
+                messages: action.messages, 
                 authError: 'LOGIN SUCCESS'
             }
+
         case 'LOGIN_FAILED': 
         console.log('login failed')
             return {
-                ...state, 
                 authError: 'LOGIN FAILED'
             }
+
+        
+        case 'SIGNUP_FAILED': 
+        console.log('login failed')
+            return {
+                authError: 'SIGNUP FAILED'
+            }
+
         case 'LOGOUT_ARTIST':
             console.log(action)
             return {
-                ...state,
-                artist: state.artist.id !== action.id,
+                loggedIn: false,
                 authError: 'LOGOUT SUCCESS' 
             }
+
         default:
             return state 
     }

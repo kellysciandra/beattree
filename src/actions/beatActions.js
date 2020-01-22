@@ -12,7 +12,7 @@ export const loadBeats = () => {
   }
 
 
-  export const addToFavorites = (favorite_artist_id, current_artist_id, link) => { 
+  export const addToFavorites = (favorite_artist_id, current_artist_id, link) => {
     return(dispatch) => {
       axios
       .post(  
@@ -33,18 +33,18 @@ export const loadBeats = () => {
     }
   }
 
-  export const fetchFavorites = () => {
-    return(dispatch) => { 
-     axios
-      .get('http://localhost:3001/favorites', { withCredentials: true})
-      .then(response => { 
-        dispatch({
-          type: 'DISPLAY_FAVORITES',
-          favorites: response.data.favorites
-        })
-      })
-    }
-}
+//   export const fetchFavorites = () => {
+//     return(dispatch) => { 
+//      axios
+//       .get('http://localhost:3001/favorites', { withCredentials: true})
+//       .then(response => { 
+//         dispatch({
+//           type: 'DISPLAY_FAVORITES',
+//           favorites: response.data.favorites
+//         })
+//       })
+//     }
+// }
 
 
 export const editBeat = (artist) => { 

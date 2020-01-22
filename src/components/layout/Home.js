@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import Button from 'react-bootstrap/Button'
+import { Form } from "react-bootstrap";
+import ReactPlayer from "react-player"
+import Card from 'react-bootstrap/Card'
+
+
+//actions
 import  { loadBeats } from '../../actions/beatActions'
 import  { addToFavorites } from '../../actions/beatActions'
 import  { sendMessage } from '../../actions/messageActions'
-import ReactPlayer from "react-player"
-import Card from 'react-bootstrap/Card'
-import { Form } from "react-bootstrap";
+
+
 class Home extends Component {
 
   state = {
@@ -21,21 +26,17 @@ class Home extends Component {
     this.setState({
       [event.target.name]: event.target.value
     })
-    console.log(this.state)
   }
 
-  handleSendMessage = (e, favorite_artist_id) => { 
-    e.preventDefault()
-    console.log(favorite_artist_id,this.props.artist.id, this.state.message)
-
-    this.props.sendMessage(this.props.artist.id, favorite_artist_id, this.state.message)
+  handleSendMessage = (favorite_artist_id) => { 
+    this.props.sendMessage(favorite_artist_id, this.state.message)
     this.setState({
       message: ''
     })
   }
 
 
-  handleFavoritesClick = (favorite_artist_id, link) => { 
+    handleAddToFavorites = (favorite_artist_id, link) => { 
     this.props.addToFavorites(favorite_artist_id, this.props.artist.id, link)
   }
 
@@ -51,25 +52,20 @@ class Home extends Component {
         url={beat.link}
         link={beat.link} 
         width='100%' 
-        height='50%'/>,
-        )
+        height='50%'/>)
       
         const card = players.map(link =>  
-        <Card 
-        className='container-2'>
+        <Card className='main-card'>
         {link}
-
-        <Button onClick={() => {this.handleFavoritesClick(link.key, link.props.link)}} className="button-2">ADD TO FAVORITES</Button>
-
-        <Form className='send-message' onSubmit={this.handleSubmit}>
+        <Button onClick={() => {this.handleAddToFavorites(link.key, link.props.link)}} className="main-card-buttons">ADD TO FAVORITES</Button>
+        <Form className='send-message'>
         <Form.Control type="message" name="message" placeholder="message" onChange={(e) => this.handleChange(e)} value={message} />
         </Form>
-        <Button type="submit" onClick={(e) => this.handleSendMessage(e, link.key)} className="button-2">SEND MESSAGE</Button>
+        <Button type="submit" onClick={() => this.handleSendMessage(link.key)} className="main-card-buttons">SEND MESSAGE</Button>
+        </Card>)
+        
 
-        </Card>
-        )
         return  (
-   
             <div>
                 <h2 className= "logo"> BeatTree </h2>
                 <span >{card}</span>
@@ -81,6 +77,8 @@ class Home extends Component {
 const mapStateToProps = (state)  => { 
     return {
       artist: state.artist.artist,
+      messages: state.artist.messages,
+      favorites: state.artist.favorites,
       beats: state.beat.beats
     }
   }
@@ -88,7 +86,7 @@ const mapStateToProps = (state)  => {
   const mapDispatchToProps = dispatch => {
     return {
      loadBeats: () => dispatch(loadBeats()),
-     addToFavorites: (favorite_artist_id, current_artist_id, link) => dispatch(addToFavorites(favorite_artist_id, current_artist_id, link)),
+     addToFavorites: (favorite_artist_id, artist_id, link) => dispatch(addToFavorites(favorite_artist_id, artist_id, link)),
      sendMessage: (favorite_artist_id, current_artist_id, message) => dispatch(sendMessage(favorite_artist_id, current_artist_id, message))
     }
   }

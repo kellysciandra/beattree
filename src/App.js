@@ -5,6 +5,8 @@ import  { fetchArtist } from './actions/artistActions'
 
 import Home from './components/layout/Home'
 import NavBar from './components/layout/NavBar'
+import MessageBoard from './components/artist/MessageBoard'
+import FavoritesBoard from './components/artist/FavoritesBoard'
 import ArtistLogin from './components/artist/ArtistLogin'
 import ArtistSignup from './components/artist/ArtistSignup'
 import ArtistEdit from './components/artist/ArtistEdit'
@@ -17,23 +19,25 @@ import './css/style.scss'
 class App extends Component {
 
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchArtist()
+
   }
 
-  render() {
+  render() {   console.log(this.props)
     if (!this.props.loggedIn) history.push('/')
     return (
       <div>
          <Router history={history}>
-         <NavBar history={history}/>
+         <NavBar artist={this.props.artist} loggedIn={this.props.loggedIn}/>
           <Switch>
-          <Route exact path="/artist" component={Artist} />
-          <Route exact path="/" component={Home}/>
-          <Route exact path="/artist/ArtistLogin" component={ArtistLogin} />
-          <Route exact path="/artist/ArtistSignup" component={ArtistSignup} />  
-          <Route exact path="/artist/ArtistEdit" component={ArtistEdit} />  
-
+          <Route path="/" exact component={Home}/>
+          <Route path="/artist" exact component={Artist} />
+          <Route path="/artist/ArtistLogin" exact component={ArtistLogin} />
+          <Route path="/artist/ArtistSignup" exact component={ArtistSignup} />  
+          <Route path="/artist/ArtistEdit" exact component={ArtistEdit} /> 
+          <Route component={MessageBoard}/>
+          <Route component={FavoritesBoard}/>
           </Switch>
         </Router>
       </div>
@@ -43,7 +47,9 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    loggedIn: state.loggedIn
+    artist: state.artist.artist,
+    messages: state.artist.messages,
+    loggedIn: state.artist.loggedIn
   }
 }
 

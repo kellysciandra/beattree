@@ -3,16 +3,16 @@ import { NavLink } from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
 import  { logoutArtist } from '../../actions/artistActions'
 import { connect } from 'react-redux';
-// import history from '../../history'
+
 
 
 class SignedInLinks extends Component { 
 
   handleLogout = (event) => {
     event.preventDefault()
-    this.props.logoutArtist(this.props.artist.id)
-    // window.location.reload(false);
-    // history.push('/')
+    this.props.logoutArtist()
+    window.location.reload(false);
+
   }
 
   render() { 
@@ -20,7 +20,7 @@ class SignedInLinks extends Component {
         <div className="nav-bar">
             <Navbar expand="sm" variant="dark">
             <Navbar.Brand href="/">BeatTree</Navbar.Brand>
-            <NavLink to="/artist" style={{ marginRight: 10 }}>Artist</NavLink> 
+            <NavLink to="/artist" style={{ marginRight: 10 }}>|Artist|</NavLink>
             <Navbar.Brand onClick={this.handleLogout} >logout</Navbar.Brand>
             </Navbar>
         </div>

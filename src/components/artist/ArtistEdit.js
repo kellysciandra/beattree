@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import  { editBeat } from '../../actions/beatActions'
-import  { fetchFavorites } from '../../actions/beatActions'
+
 import Button from 'react-bootstrap/Button'
 import { Col, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
@@ -23,7 +23,6 @@ class ArtistEdit extends Component {
     event.preventDefault()
     this.props.editBeat(this.state,this.props.artist.id)
     window.location.reload(false);
-
 }
 
   handleBack = () => {
@@ -67,7 +66,7 @@ render() {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {console.log(state)
   return {
     artist: state.artist.artist,
   }
@@ -76,7 +75,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
       editBeat: (new_link, artist_id) => dispatch(editBeat(new_link, artist_id)),
-      fetchFavorites: () => dispatch(fetchFavorites())
   }
 }
 
