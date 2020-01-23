@@ -3,7 +3,6 @@ import ReactPlayer from "react-player"
 
 const FavoritesBoard = (props) => {
 
-
     const favorites = props.favorites ? props.favorites.map((favorite, id) =>
     <ReactPlayer 
     className='react-player'
@@ -14,7 +13,7 @@ const FavoritesBoard = (props) => {
     />):<div>LOADINGGGGG</div>
     
         return (
-            <div>
+            <div className='favorites-insert'>
             {favorites}
             </div>
         )

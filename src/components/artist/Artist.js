@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import { connect } from 'react-redux'
 import ReactPlayer from "react-player"
+
+// Container Components
 import MessageBoard from './MessageBoard'
 import FavoritesBoard from './FavoritesBoard'
 
@@ -18,12 +20,13 @@ class Artist extends Component {
         return (
             <div>
                 <br></br><br></br><br></br><br></br> 
-                <Card className='container-2'>
+                <Card className='artist-container'>
                 <div className='card-title'>Artist</div> 
                 <div className='card-sub-title'>{this.props.artist.email}</div>
                 <div className='card-sub-title'>{this.props.artist.city}, {this.props.artist.state}</div>
                 <Button className='button' type="button" onClick={this.handleSubmit} >Edit Beat</Button>
                 <ReactPlayer 
+                    controls= {true}
                     className='react-player'
                     key={this.props.artist.id}
                     url={this.props.artist.link}
@@ -31,15 +34,16 @@ class Artist extends Component {
                     height='50%'
                     />
                 </Card>
+                
                 <div>
-                <Card className='container-2'>
+                <Card className='artist-container'>
                 <div className='card-title'>FAVORITES</div> 
                 <FavoritesBoard favorites={this.props.favorites}/>
                 </Card>
                 </div>
 
                 <div>
-                <Card className='container-2'>
+                <Card className='artist-container'>
                 <div className='card-title'>MESSAGES</div>  
                 <MessageBoard messages={this.props.messages}/>
                 </Card>

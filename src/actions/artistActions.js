@@ -2,12 +2,13 @@ import axios from 'axios'
 
 
 export const fetchArtist = () => {
-  return(dispatch) => {
+  return(dispatch) => { 
    axios
     .get('http://localhost:3001/logged_in', { withCredentials: true})
     .then(response => { console.log(response)
         if ( response.data.logged_in ) { 
-          dispatch({ type: 'FETCH_ARTIST', 
+          dispatch({ 
+          type: 'FETCH_ARTIST', 
           artist: response.data.artist,
           loggedIn: response.data.logged_in,
           favorites: response.data.favorites,
@@ -24,7 +25,6 @@ export const createArtist = (artist) => {
           'http://localhost:3001/artists', 
           {
             artist: {
-       
               email: artist.email,
               password: artist.password, 
               city: artist.city, 
@@ -40,36 +40,14 @@ export const createArtist = (artist) => {
                   type: 'CREATE_ARTIST', 
                   artist: response.data.artist,
                   loggedIn: response.data.logged_in})
-          }  else {
-            dispatch({
-              type: 'SIGNUP_FAILED'
-            })
-      }      
+          } else { 
+                dispatch({
+                  type: 'SIGNUP_FAILED',
+                  error: response.data.errors
+              })
+            }      
         })
     }
-}
-
-export const editArtist = (artist) => { 
-  return(dispatch) => {
-    axios
-    .patch(
-      'http://localhost:3001/artists/`#{artist.id}`', 
-      {
-        artist: {
-          id: artist.id,
-          email: artist.email,
-          password: artist.password, 
-          city: artist.city, 
-          state: artist.state,
-          link: artist.link
-        }
-      },
-      { withCredentials: true },
-    )
-    .then(response => {
-      console.log(response)
-    })
-  }
 }
 
 export const loginArtist = (artist) => { 
@@ -88,23 +66,23 @@ export const loginArtist = (artist) => {
         .then(response => { console.log(response)
             if (response.data.logged_in) {
                 dispatch({ 
-                    type: 'LOGIN_ARTIST', 
-                    artist: response.data.artist,
-                    loggedIn: response.data.logged_in})
+                  type: 'LOGIN_ARTIST', 
+                  artist: response.data.artist,
+                  loggedIn: response.data.logged_in})
           } else {
                 dispatch({
                   type: 'LOGIN_FAILED'
                 })
-          }    
+            }    
         })
     }
 }
 
-export const logoutArtist = (artist) => { console.log(artist)
+export const logoutArtist = (artist) => { 
     return(dispatch, getState) => { 
         axios
         .delete(  'http://localhost:3001/logout', { withCredentials: true },)
-        .then(response => { console.log(response)
+        .then(response => { 
             if (response.data.logged_in) {
                 dispatch({ type: 'LOGOUT_ARTIST'})
           }     

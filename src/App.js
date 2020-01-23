@@ -18,14 +18,12 @@ import './css/style.scss'
 
 class App extends Component {
 
-
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchArtist()
-
   }
 
-  render() {   console.log(this.props)
-    if (!this.props.loggedIn) history.push('/')
+  render() {   
+    if (!this.props.loggedIn && !this.props.authError) history.push('/')
     return (
       <div>
          <Router history={history}>
@@ -45,11 +43,12 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = state => { 
   return {
     artist: state.artist.artist,
     messages: state.artist.messages,
-    loggedIn: state.artist.loggedIn
+    loggedIn: state.artist.loggedIn,
+    authError: state.artist.authError
   }
 }
 

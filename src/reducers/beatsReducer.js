@@ -4,16 +4,14 @@ const beatsReducer = (state = {beats: [], favorites:[]}, action) => {
             return {
                 beats: action.beats
             }
-            case 'ADD_TO_FAVORITES':
-                return {
-                    ...state,
-                 artist_favorites: action.favorites
-                }
-            // case 'DISPLAY_FAVORITES':
-            //     return {
-            //         ...state, 
-            //     favorites: action.favorites
-            //     }
+
+        case 'ADD_TO_FAVORITES': 
+            console.log(action)
+            return {
+                ...state,
+            //  artist_favorites: action.favorites
+            }
+            
         default:
             return state 
     }

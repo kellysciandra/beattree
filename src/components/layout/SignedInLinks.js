@@ -4,8 +4,6 @@ import Navbar from 'react-bootstrap/Navbar'
 import  { logoutArtist } from '../../actions/artistActions'
 import { connect } from 'react-redux';
 
-
-
 class SignedInLinks extends Component { 
 
   handleLogout = (event) => {

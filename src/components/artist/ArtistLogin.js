@@ -29,7 +29,7 @@ class ArtistLogin extends Component {
         this.props.loginArtist(this.state)
     }
 
-    render() { console.log(this.props)
+    render() { 
         // destructuring
         const {email, password} = this.state
         

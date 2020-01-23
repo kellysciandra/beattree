@@ -35,9 +35,8 @@ const artistsReducer = (state = {artist: [], favorites: {}, loggedIn: false, aut
                 authError: 'LOGIN FAILED'
             }
 
-        
         case 'SIGNUP_FAILED': 
-        console.log('login failed')
+        console.log('login failed', action.error)
             return {
                 authError: 'SIGNUP FAILED'
             }

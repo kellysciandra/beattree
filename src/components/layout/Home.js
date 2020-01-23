@@ -10,7 +10,7 @@ import Card from 'react-bootstrap/Card'
 import  { loadBeats } from '../../actions/beatActions'
 import  { addToFavorites } from '../../actions/beatActions'
 import  { sendMessage } from '../../actions/messageActions'
-
+import  { fetchArtist } from '../../actions/artistActions'
 
 class Home extends Component {
 
@@ -20,7 +20,9 @@ class Home extends Component {
 
   componentDidMount() {
     this.props.loadBeats()
+    this.props.fetchArtist()
   }
+
 
   handleChange = event => {
     this.setState({
@@ -33,11 +35,13 @@ class Home extends Component {
     this.setState({
       message: ''
     })
+    this.props.fetchArtist()
   }
 
 
     handleAddToFavorites = (favorite_artist_id, link) => { 
     this.props.addToFavorites(favorite_artist_id, this.props.artist.id, link)
+    this.props.fetchArtist()
   }
 
 
@@ -79,13 +83,15 @@ const mapStateToProps = (state)  => {
       artist: state.artist.artist,
       messages: state.artist.messages,
       favorites: state.artist.favorites,
-      beats: state.beat.beats
+      beats: state.beat.beats,
+      loggedIn: state.artist.loggedIn
     }
   }
 
   const mapDispatchToProps = dispatch => {
     return {
      loadBeats: () => dispatch(loadBeats()),
+     fetchArtist: () => dispatch(fetchArtist()),
      addToFavorites: (favorite_artist_id, artist_id, link) => dispatch(addToFavorites(favorite_artist_id, artist_id, link)),
      sendMessage: (favorite_artist_id, current_artist_id, message) => dispatch(sendMessage(favorite_artist_id, current_artist_id, message))
     }

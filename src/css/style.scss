@@ -3,23 +3,8 @@
 * {
   text-align: center;
   background-color:#39a0ca;
-}
-
-html {
-  font-size: 16px;
-  font-family: 'IBM Plex Serif', serif;
-}
-
-
-
-.container-1 {
-  background-color: #f95d9b;
-  border: dotted;
-  border-style: dashed;
-  padding: 10px;
-  margin-left: 75px;
-  display: inline;
-  border-radius: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .container-2 {
@@ -48,7 +33,7 @@ html {
   font-family: 'Concert One', cursive;
   font-size: 15em;
   margin-left: 20px;
-  margin-bottom: 25px
+  margin-bottom: 25px;
 }
 
 //navbar
@@ -56,10 +41,10 @@ html {
 .nav-bar {
   text-align: center;
   font-family: 'Concert One', cursive;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-left: 30px;
   margin-right: 30px;
-  font-size: 40px;
+  font-size: 45px;
   display: flex;
   justify-content: space-around;
   background-color: #f95d9b
@@ -109,7 +94,7 @@ html {
   font-family: 'Concert One', cursive;
   color: black;
 
-  margin-top: 15px;
+
   margin-left: 20px;
   margin-bottom: 20px;
   margin-right: 20px;
@@ -156,6 +141,8 @@ html {
   display: inline-block;
   font-family: 'Concert One', cursive;
   border-radius: 8px;
+  margin-top: -40px;
+  margin-left: 25px;
 }
 
 
@@ -178,6 +165,58 @@ html {
 
 
 
+// artist page 
+
+.artist-container {
+  background-color:#29e0a3;
+  padding: 5px;
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-bottom: 50px;
+  margin-top: -15px;
+  border-radius: 20px;
+}
+
+.favorites-insert{
+  background-color:#29e0a3;
+  display: flex;
+}
+
+.message-insert{
+  background-color:#29e0a3;
+}
+
+.messages {
+  font-family: 'Concert One', cursive;
+  font-size: 30px;
+  background-color:#29e0a3;
+}
+
+.card-title {
+  background-color:#29e0a3;
+  font-family: 'Concert One', cursive;
+  font-size: 3em;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-bottom: 15px
+}
+
+.card-sub-title {
+  background-color:#29e0a3;
+  font-family: 'Concert One', cursive;
+  font-size: 2em;
+  margin-left: 20px;
+  margin-bottom: 25px
+}
+
+
+//artist edit 
+
+.edit-beat {
+  display: inline-block;
+  font-family: 'Concert One', cursive;
+  margin-top: -50px;
+}
 
 
 
@@ -185,12 +224,7 @@ html {
 
 
 
-
-
-
-
-
-
+//In Use?
 
 
 
@@ -209,34 +243,11 @@ html {
 }
 
 
-.card-title {
-  background-color:#29e0a3;
-  font-family: 'Concert One', cursive;
-  font-size: 3em;
-  margin-top: 30px;
-  margin-left: 20px;
-  margin-bottom: 25px
-}
-
-.card-sub-title {
-  background-color:#29e0a3;
-  font-family: 'Concert One', cursive;
-  font-size: 2em;
-  margin-left: 20px;
-  margin-bottom: 25px
-}
-
-
 
 .upload {
   padding: 0.2em;
   cursor: pointer;
 }
-
-// .player-wrapper {
-//   position: relative;
-//   padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */
-// }
 
 .react-player {
   border-radius: 8px;
@@ -251,12 +262,41 @@ html {
   margin-right: 1200px;
 }
 
-.messages {
-  font-family: 'Concert One', cursive;
-  font-size: 30px;
-  background-color:#29e0a3;
-}
 
-.chat-window { 
-  box-sizing: border-box;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Not Used
+
+
+
+// .chat-window { 
+//   box-sizing: border-box;
+// }
+
+// html {
+//   font-size: 16px;
+//   font-family: 'IBM Plex Serif', serif;
+// }
+
+// .container-1 {
+//   background-color: #f95d9b;
+//   border: dotted;
+//   border-style: dashed;
+//   padding: 10px;
+//   margin-left: 75px;
+//   display: inline;
+//   border-radius: 20px;
+// }

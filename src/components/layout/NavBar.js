@@ -1,17 +1,12 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux';
+import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 
-
-
-class NavBar extends Component{
+const NavBar = (props) => {
     
-  render() { 
-
-   const links = this.props.loggedIn? <SignedInLinks/> : <SignedOutLinks />
-
+   const links = props.loggedIn? <SignedInLinks/> : <SignedOutLinks />
+  
       return (
         <div className='nav-bar'>
         <Navbar expand="sm" variant="dark">
@@ -22,22 +17,14 @@ class NavBar extends Component{
         </Navbar>
       </div>
       )
-  }
 }
 
-const mapStateToProps = (state) => { 
-  return {
-    artist: state.artist.artist,
-    loggedIn: state.artist.loggedIn,
-  }
-}
 
-export default connect(mapStateToProps)(NavBar)
+// const mapStateToProps = (state) => {
+//   return {
+//     artist: state.artist.artist,
+//     loggedIn: state.artist.loggedIn,
+//   }
+// }
 
-
-
-
-
-
-
-     
+export default NavBar
