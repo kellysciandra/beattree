@@ -9,8 +9,8 @@ class SignedInLinks extends Component {
   handleLogout = (event) => {
     event.preventDefault()
     this.props.logoutArtist()
+    console.log('logged_out')
     window.location.reload(false);
-
   }
 
   render() { 

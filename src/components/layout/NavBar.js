@@ -19,12 +19,4 @@ const NavBar = (props) => {
       )
 }
 
-
-// const mapStateToProps = (state) => {
-//   return {
-//     artist: state.artist.artist,
-//     loggedIn: state.artist.loggedIn,
-//   }
-// }
-
 export default NavBar

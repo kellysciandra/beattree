@@ -48,8 +48,6 @@ class Artist extends Component {
                 <MessageBoard messages={this.props.messages}/>
                 </Card>
                 </div>
-
-
             </div>
         )
     }
@@ -63,7 +61,5 @@ const mapStateToProps = (state) => {
       messages: state.artist.messages
     }
   }
-
-
 
 export default connect(mapStateToProps)(Artist)
