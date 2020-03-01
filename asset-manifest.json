@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/kellysciandra/beattree/static/css/main.10edd5f1.chunk.css",
+    "main.js": "/kellysciandra/beattree/static/js/main.fb47d024.chunk.js",
+    "main.js.map": "/kellysciandra/beattree/static/js/main.fb47d024.chunk.js.map",
+    "runtime-main.js": "/kellysciandra/beattree/static/js/runtime-main.f8b545db.js",
+    "runtime-main.js.map": "/kellysciandra/beattree/static/js/runtime-main.f8b545db.js.map",
+    "static/css/2.2839e97b.chunk.css": "/kellysciandra/beattree/static/css/2.2839e97b.chunk.css",
+    "static/js/2.4207cd7f.chunk.js": "/kellysciandra/beattree/static/js/2.4207cd7f.chunk.js",
+    "static/js/2.4207cd7f.chunk.js.map": "/kellysciandra/beattree/static/js/2.4207cd7f.chunk.js.map",
+    "index.html": "/kellysciandra/beattree/index.html",
+    "precache-manifest.d0178cb55fcd3df760118b469eb248f7.js": "/kellysciandra/beattree/precache-manifest.d0178cb55fcd3df760118b469eb248f7.js",
+    "service-worker.js": "/kellysciandra/beattree/service-worker.js",
+    "static/css/2.2839e97b.chunk.css.map": "/kellysciandra/beattree/static/css/2.2839e97b.chunk.css.map",
+    "static/css/main.10edd5f1.chunk.css.map": "/kellysciandra/beattree/static/css/main.10edd5f1.chunk.css.map",
+    "static/js/2.4207cd7f.chunk.js.LICENSE": "/kellysciandra/beattree/static/js/2.4207cd7f.chunk.js.LICENSE",
+    "static/media/all.min.css": "/kellysciandra/beattree/static/media/fa-solid-900.f6121be5.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f8b545db.js",
+    "static/css/2.2839e97b.chunk.css",
+    "static/js/2.4207cd7f.chunk.js",
+    "static/css/main.10edd5f1.chunk.css",
+    "static/js/main.fb47d024.chunk.js"
+  ]
+}
